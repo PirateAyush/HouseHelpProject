@@ -13,3 +13,7 @@ def about(request):
 
     return render(request,'frontend/about.html')
 # Create your views here.
+
+def  user(request):
+
+    return render(request,'frontend/user.html')

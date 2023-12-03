@@ -95,7 +95,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-primary" id="loginBTN">Login</button>
           </div>
         </div>
       </div>
@@ -232,6 +232,10 @@
 <!-- Footer -->
 
 <script>
+$('#loginBTN').click(function(){
+    console.log("in");
+      location.replace('http://127.0.0.1:8000/frontend/user')
+   });
   {% block js %}
 
   {% endblock %}

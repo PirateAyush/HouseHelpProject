@@ -6,6 +6,42 @@
       display: grid;
       place-items: center;
     }
+
+      .col-md-3
+      {
+      display: inline-block;
+      margin-left:-4px;
+      }
+      .carousel-indicators .active {
+      background-color: blue;
+        }
+      .col-md-3 img{
+      width:100%;
+      height:auto;
+      }
+      body .carousel-indicator li{
+      background-color: blue;
+      }
+      body .carousel-indicators{
+      bottom: 0;
+      }
+      body .carousel-control-prev-icon,
+      body .carousel-control-next-icon{
+      background-color: blue;
+      }
+       body .no-padding{
+       padding-left: 0,
+       padding-right: 0;
+       }
+        .carousel-control-next,
+        .carousel-control-prev {
+            top:auto;
+            bottom:auto;
+            margin-top:10px;
+        }
+
+
+
 {% endblock %}
 {% block body%}
 
@@ -140,6 +176,9 @@
         </form>
     </div>
 
+
+
+{% include "basic/maidSlider.html" %}
 
 {% endblock %}
 
