@@ -35,16 +35,16 @@
         <a class="nav-link" href="/frontend/about">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/shop/tracker">How it works</a>
+        <a class="nav-link" href="">How it works</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/shop/contact">What we offer</a>
+        <a class="nav-link" href="#whatWeOffer">What we offer</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/shop/contact">Why us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/shop/contact">Prices</a>
+        <a class="nav-link" href="/frontend/prices">Prices</a>
       </li>
 
     </ul>
@@ -95,7 +95,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-primary" id="loginBTN">Login</button>
           </div>
         </div>
       </div>
@@ -232,6 +232,10 @@
 <!-- Footer -->
 
 <script>
+$('#loginBTN').click(function(){
+    console.log("in");
+      location.replace('http://127.0.0.1:8000/frontend/user')
+   });
   {% block js %}
 
   {% endblock %}
