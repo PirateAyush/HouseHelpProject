@@ -17,3 +17,7 @@ def about(request):
 def  user(request):
 
     return render(request,'frontend/user.html')
+
+def  prices(request):
+
+    return render(request,'frontend/prices.html')
