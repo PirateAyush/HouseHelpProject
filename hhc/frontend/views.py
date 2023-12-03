@@ -12,10 +12,4 @@ def index(request):
 def about(request):
 
     return render(request,'frontend/about.html')
-
-def prices(request):
-
-    return render(request,'frontend/prices.html')
-
 # Create your views here.
-
