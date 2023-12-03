@@ -6,7 +6,20 @@
       display: grid;
       place-items: center;
     }
+    .card-square{
+        width: 100%; /* Set the width of the card */
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Add a subtle box shadow */
+        background-color:; /* Set the background color to white */
+    }
+
+    .card-small-body{
+        padding: 0px; /* Add some padding inside the card */
+        border-radius: 20px; /* Add rounded corners */
+        box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2); /* Add a subtle box shadow */
+
+    }
 {% endblock %}
+
 {% block body%}
 
     <div class="centered-div">
@@ -15,7 +28,7 @@
         <h1>Maid Service in Mumbai</h1>
     </div>
 
-    <div class="card" style="background-color:#C2CECE;border:none">
+    <div class="card card-square" style="background-color:#C2CECE;border:none">
         <div class="card-body">
             <div class="row" style="border:none">
                 <div class="col-md-3" >
@@ -77,12 +90,14 @@
             </div>
         </div>
     </div>
-    <div class="card" style="background-color:white;border:none;margin-top:5%;">
+
+    <div class="card card-square" style="background-color:white;border:none;margin-top:0%;">
         <form id="contact_form" style="background-color:#C2CECE;">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
+                    <br>
                     <h2>Hire Maids only for mumbai</h2>
                 </div>
                 <div class="col-md-4"></div>
@@ -140,7 +155,9 @@
         </form>
     </div>
 
+{% include "basic/whyUse.html" %}
 
+<!--body end-->
 {% endblock %}
 
 
@@ -253,3 +270,6 @@
 <!--    });-->
 
 {% endblock %}
+
+
+
