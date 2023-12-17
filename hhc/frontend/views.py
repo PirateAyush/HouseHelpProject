@@ -21,3 +21,15 @@ def  user(request):
 def  prices(request):
 
     return render(request,'frontend/prices.html')
+
+def  basic(request):
+
+    return render(request,'frontend/basic_form.html')
+
+def backgroundVerification(request):
+    
+    return render(request,'frontend/background_verification_form.html')
+
+def advance(request):
+    
+    return render(request,'frontend/advance_form.html')

@@ -23,5 +23,8 @@ urlpatterns = [
     path("",views.index, name="Home"),
     path("about/",views.about,name="AboutUs"),
     path("user/",views.user,name="user"),
-    path("prices/",views.prices,name="Prices")
+    path("prices/",views.prices,name="Prices"),
+    path("basic-form/",views.basic,name="Basic"),
+    path("background-verification-form/",views.backgroundVerification,name="BackgroundVerification"),
+    path("advance-form/",views.advance,name="Advance")
 ]
