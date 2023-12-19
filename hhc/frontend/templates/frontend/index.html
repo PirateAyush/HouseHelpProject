@@ -6,6 +6,7 @@
       display: grid;
       place-items: center;
     }
+
     .col-md-3
       {
       display: inline-block;
@@ -40,6 +41,8 @@
         }
 {% endblock %}
 {% block body%}
+    
+    
 
     <div class="centered-div">
         <br>
@@ -172,8 +175,10 @@
         </form>
     </div>
     {% include "basic/whyUse.html" %}
+    {% include "basic/howItWorks.html" %}
     {% include "basic/maidSlider.html" %}
-
+    {% include "basic/whatsapp.html" %}
+    
 {% endblock %}
 
 
