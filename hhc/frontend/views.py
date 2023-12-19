@@ -21,3 +21,7 @@ def  user(request):
 def  prices(request):
 
     return render(request,'frontend/prices.html')
+
+def  whyUs(request):
+
+    return render(request,'frontend/whyUs.html')
