@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+    
     <title>{% block title%}{% endblock %}</title>
       <style>
           {% block css %} {% endblock %}
@@ -233,12 +233,11 @@
 
 <script>
 $('#loginBTN').click(function(){
-    console.log("in");
       location.replace('http://127.0.0.1:8000/frontend/user')
    });
   {% block js %}
 
   {% endblock %}
 </script>
-  </body>
+</body>
 </html>
