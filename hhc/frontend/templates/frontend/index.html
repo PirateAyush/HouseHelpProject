@@ -6,6 +6,7 @@
       display: grid;
       place-items: center;
     }
+
     .col-md-3
       {
       display: inline-block;
@@ -62,6 +63,8 @@
 {% endblock %}
 
 {% block body%}
+    
+    
 
     {% for message in messages %}
         <p class="alert-success bg-gradient-success text-black centered-div">
@@ -206,8 +209,10 @@
         </form>
     </div>
     {% include "basic/whyUse.html" %}
+    {% include "basic/howItWorks.html" %}
     {% include "basic/maidSlider.html" %}
-
+    {% include "basic/whatsapp.html" %}
+    
 {% endblock %}
 
 
