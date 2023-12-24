@@ -39,10 +39,41 @@
             bottom:auto;
             margin-top:10px;
         }
+
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
 {% endblock %}
+
 {% block body%}
     
     
+
+    {% for message in messages %}
+        <p class="alert-success bg-gradient-success text-black centered-div">
+            {{message}}
+            <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        <p>
+    {% endfor %}
 
     <div class="centered-div">
         <br>
@@ -113,7 +144,7 @@
         </div>
     </div>
     <div class="card" style="background-color:white;border:none;margin-top:5%;">
-        <form id="contact_form" style="background-color:#C2CECE;">
+        <form id="contact_form" style="background-color:#C2CECE;" action="{% url 'Home' %}" method="post">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-4"></div>
@@ -140,9 +171,11 @@
                 <div class="form-group col-md-3"></div>
                 <div class="form-group col-md-3">
                     <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" title="Please Enter First Name" required>
+                    {% comment %} {{form.first_name}} {% endcomment %}
                 </div>
                 <div class="col-md-3 form-group">
                     <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
+                    {% comment %} {{form.last_name}} {% endcomment %}
                 </div>
                 <div class="form-group col-md-3"></div>
             </div>
@@ -152,6 +185,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <input class="form-control" type="text" id="mobile" name="mobile" placeholder="Mobile Number"  required>
+                    {% comment %} {{form.phone_number}} {% endcomment %}
                 </div>
                 <div class="form-group col-md-3">
                 </div>
@@ -198,6 +232,7 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                {% comment %} {{form.email}} {% endcomment %}
                             </div>
                             <div class="form-group col-md-3"></div>
                          </div>`
@@ -206,55 +241,14 @@
                             <div class="form-group col-md-3"></div>
                             <div class="col-md-3 form-group">
                                 <input type="text" class="form-control" id="uname" name="uname" placeholder="User Name" required>
+                                {% comment %} {{form.user_name}} {% endcomment %}
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Create Password" title="Create Password" required>
+                                {% comment %} {{form.password}} {% endcomment %}
                             </div>
                             <div class="form-group col-md-3"></div>
                         </div>`
-
-<!--                html += `<div class="row">-->
-<!--                            <div class="form-group col-md-3">-->
-<!--                            </div>-->
-<!--                            <div class="col-md-6 form-group">-->
-<!--                                Select as per your requirement !-->
-<!--                            </div>-->
-<!--                            <div class="form-group col-md-3">-->
-<!--                            </div>-->
-<!--                        </div>`-->
-
-<!--                html += `<div class="row">-->
-<!--                            <div class="form-group col-md-3">-->
-<!--                            </div>-->
-<!--                            <div class="col-md-6 form-group">-->
-<!--                                <div class="form-check">-->
-<!--                                  <input class="form-check-input" type="checkbox" value="" id="cleaning" name="cleaning">-->
-<!--                                  <label class="form-check-label" for="cleaning">-->
-<!--                                    Cleaning-->
-<!--                                  </label>-->
-<!--                                </div>-->
-<!--                                <div class="form-check">-->
-<!--                                  <input class="form-check-input" type="checkbox" value="" id="cooking" name="cooking">-->
-<!--                                  <label class="form-check-label" for="cooking">-->
-<!--                                    Cooking-->
-<!--                                  </label>-->
-<!--                                </div>-->
-<!--                                <div class="form-check">-->
-<!--                                  <input class="form-check-input" type="checkbox" value="" id="baby_sitting" name="baby_sitting">-->
-<!--                                  <label class="form-check-label" for="baby_sitting">-->
-<!--                                      Baby Sitting-->
-<!--                                  </label>-->
-<!--                                </div>-->
-<!--                                <div class="form-check">-->
-<!--                                  <input class="form-check-input" type="checkbox" value="" id="elderly_care" name="elderly_care">-->
-<!--                                  <label class="form-check-label" for="elderly_care">-->
-<!--                                    Elderly Care-->
-<!--                                  </label>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="form-group col-md-3">-->
-<!--                            </div>-->
-<!--                        </div>`-->
 
                 html += `<div class="row">
                             <div class="form-group col-md-3"></div>
@@ -282,6 +276,15 @@
                             <div class="form-group col-md-3">
                             </div>
                         </div>`
+
+                html += `<div class="row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-3">
+                        <input type="submit" value="Register" class="btn btn-primary">
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>`
+
                 $("#extra_contact_detail").append(html);
             }
             else{
@@ -289,5 +292,10 @@
             }
         });
 <!--    });-->
+        $(document).ready(function () {
+            $(".close").click(function () {
+                $(".alert-success").remove();
+            });
+        });
 
 {% endblock %}
