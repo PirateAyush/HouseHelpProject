@@ -5,10 +5,36 @@
       display: grid;
       place-items: center;
     }
+    #animated-block {
+        display: none;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        position: fixed;
+        top: 60px;
+        right: 15px;
+        animation: slideInOut 4.5s ease-out;
+    }
+    
+    @keyframes slideInOut {
+        0%, 100% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        10%, 90% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+    }
 {% endblock %}
 
 
 {% block body %}
+<div id="animated-block" class="hidden">
+    <p>Welcome, <span id="username-placeholder">Username</span>!</p>
+</div>
 <div class="centered-div">
         <br>
         <h5>Build Your Profile To Use Our Services.</h5>
@@ -122,5 +148,24 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block js %}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Fetch the username from Django template variable or your API
+    var username = "{{ user.user_name }}"; // Replace with the actual variable
+
+    // Update the placeholder text with the username
+    document.getElementById("username-placeholder").innerText = username;
+
+    // Display the animated block
+    var animatedBlock = document.getElementById("animated-block");
+    animatedBlock.style.display = "block";
+    setTimeout(function () {
+        animatedBlock.style.display = "none";
+    }, 3000);
+});
 
 {% endblock %}
