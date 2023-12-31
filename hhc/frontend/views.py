@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect ,get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -11,6 +11,7 @@ from .constants import *
 #Form Imports
 from django import forms
 from .forms import CustomeUserForm
+from django.contrib.auth import authenticate,login,logout
 
 #Messages
 from django.contrib import messages
@@ -43,8 +44,27 @@ def about(request):
 # Create your views here.
 
 def  user(request):
+    if request.method == "POST":
+        username   = request.POST['uname']
+        password   = request.POST['password']
 
-    return render(request,'frontend/user.html')
+        try:
+            user = CustomeUser.objects.get(user_name=username, password=password)
+        except CustomeUser.DoesNotExist:
+            user = None
+        if user is not None:
+            print(user.id)
+            return redirect('userSpecific',user_id=user.id)
+        else:
+            return redirect("Home")
+    else:
+        return redirect("Home")
+
+def userSpecific(request,user_id):
+    user = get_object_or_404(CustomeUser,id=user_id)
+    params = {'user':user}
+    return render(request,'frontend/user.html',params)
+    
 
 def  prices(request):
 
@@ -53,14 +73,22 @@ def  prices(request):
 def  whyUs(request):
 
     return render(request,'frontend/whyUs.html')
-def  basic(request):
 
-    return render(request,'frontend/basic_form.html')
+def  basic(request,user_id):
 
-def backgroundVerification(request):
-    
-    return render(request,'frontend/background_verification_form.html')
+    user = get_object_or_404(CustomeUser,id=user_id)
+    params = {'user':user}
+    return render(request,'frontend/basic_form.html',params)
 
-def advance(request):
-    
-    return render(request,'frontend/advance_form.html')
+def backgroundVerification(request,user_id):
+
+    user = get_object_or_404(CustomeUser,id=user_id)
+    params = {'user':user}    
+    return render(request,'frontend/background_verification_form.html',params)
+
+def advance(request,user_id):
+
+    user = get_object_or_404(CustomeUser,id=user_id)
+
+    params = {'user':user}    
+    return render(request,'frontend/advance_form.html',params)
