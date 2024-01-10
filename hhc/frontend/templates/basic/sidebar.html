@@ -89,7 +89,15 @@
     color: white;
 }
 
-
+#footer {
+  background-color: white;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  margin-left: 20%;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
           {% block css %} {% endblock %}
       </style>
   </head>
@@ -115,7 +123,7 @@
                 </div>
               </div>
             </div>
-            <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="navbar navbar-dark bg-dark shadow-sm" style="position: fixed;width: 100%;top: 0;left: 0;z-index: 1000;">
                 <button class="navbar-toggler collapsed" type="button">
                     <span class="navbar-toggler-icon" onclick="toggleSidebar()"></span>
                 </button>
@@ -126,6 +134,7 @@
                     </svg>
                   </a>
                 </div>
+                
               <div class="container d-flex justify-content-end">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
@@ -164,8 +173,11 @@
 
     {% block body %} {% endblock %}
 
-    <!-- Modal Section-->
-    <!--1. Login Modal    -->
+
+    <div id="footer">
+      <!-- Footer content goes here -->
+      Footer Content
+    </div>
 
 
     <!-- Optional JavaScript -->
