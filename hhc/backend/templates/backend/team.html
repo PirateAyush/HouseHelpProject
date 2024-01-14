@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/team.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:06:39 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<title>Team || Fouens || Responsive HTML 5 Template</title>
+
+	<!-- responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+	<!-- master stylesheet -->
+	<link rel="stylesheet" href="{% static 'backend/css/style.css' %}">
+	<!-- Responsive stylesheet -->
+	<link rel="stylesheet" href="{% static 'backend/css/responsive.css' %}">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'backend/images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'backend/images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'backend/images/favicon/favicon-16x16.png' %}" sizes="16x16">
+
+    <!-- Fixing Internet Explorer-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    
+</head>
+
+<body>
+<div class="boxed_wrapper">
+
+<div class="preloader"></div> 
+
+<!--Start Main Header-->
+{% include "layouts/main-header.html" %}
+<!--End Main Header-->   
+
+<!--Start breadcrumb area-->     
+<section class="breadcrumb-area" style="background-image:url({% static 'backend/images/resources/breadcrumb-bg.jpg'%});">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content text-center clearfix">
+                    <div class="breadcrumb-menu">
+                        <ul class="clearfix">
+                            <li><a href="{% url 'Home' %}">Home</a></li>
+                            <li class="active">Team</li>
+                        </ul>    
+                    </div>
+                    <div class="title">
+                       <h1>Our Team</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>
+<!--End breadcrumb area--> 
+  
+<!--Start team area-->
+{% include "layouts/main-team.html" %}
+<!--End team area-->
+
+<!--Start Brand area-->
+<!--End Brand area-->  
+
+<!--Start footer area--> 
+{% include "layouts/main-footer.html" %}
+<!--End footer area-->
+
+<!--Start footer bottom area-->
+<section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="inner text-center clearfix">
+                    <div class="copyright-text">
+                        <p>© Copyright 2019 by <a href="#">fouens.com</a></p>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>    
+</section>
+<!--End footer bottom area-->   
+  
+
+</div>  
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+
+{% include "js-files.html" %}
+
+
+
+</body>
+
+<!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/team.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:06:40 GMT -->
+</html>

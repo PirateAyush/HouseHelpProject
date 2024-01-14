@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/news-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:06:43 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<title>Blog Single || Fouens || Responsive HTML 5 Template</title>
+
+	<!-- responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+	<!-- master stylesheet -->
+	<link rel="stylesheet" href="{% static 'backend/css/style.css' %}">
+	<!-- Responsive stylesheet -->
+	<link rel="stylesheet" href="{% static 'backend/css/responsive.css' %}">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'backend/images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'backend/images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'backend/images/favicon/favicon-16x16.png' %}" sizes="16x16">
+
+    <!-- Fixing Internet Explorer-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    
+</head>
+
+<body>
+<div class="boxed_wrapper">
+
+<div class="preloader"></div> 
+
+<!--Start Main Header-->
+{% include "layouts/main-header.html" %}
+<!--End Main Header-->   
+
+<!--Start breadcrumb area-->     
+<section class="breadcrumb-area" style="background-image:url({% static 'backend/images/resources/breadcrumb-bg.jpg'%});">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content text-center clearfix">
+                    <div class="breadcrumb-menu">
+                        <ul class="clearfix">
+                            <li><a href="{% url 'Home' %}">Home</a></li>
+                            <li class="active">Blog Single</li>
+                        </ul>    
+                    </div>
+                    <div class="title">
+                       <h1>Blog Single Posts</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>
+<!--End breadcrumb area-->      
+
+<!--Start blog single area-->
+<section id="blog-area" class="blog-single-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12">
+                <div class="blog-post">
+                    <!--Start single blog post-->
+                    <div class="single-blog-post">
+                        <div class="img-holder">
+                            <img src="{% static 'backend/images/blog/blog-single.jpg' %}" alt="Awesome Image">
+                            <div class="post-date">
+                                <h6>Jan 18, 2019</h6>
+                            </div>
+                        </div>
+                        <div class="text-holder">
+                            <h3 class="blog-title">Introducing fireline cleaning services</h3> 
+                            <div class="meta-box">
+                                <ul class="meta-info">
+                                    <li><a href="#">By Layerdrops</a></li>
+                                    <li><a href="#">2 Comments</a></li>
+                                </ul>   
+                            </div>
+                            <div class="text">
+                                <p class="mar-bottom">There are many variations passages of lorem ipsum available but the majority have suffered alteration. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries but also the leap into typesetting remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing software like including versions.</p>
+                                
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing lorem ipsum passages, and more recently with desktop publishing software like aldus page maker including versions of lorem ipsum.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End single blog post-->
+                    
+                    <!--Start tag box-->
+                    <div class="tag-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tag pull-left">
+                                    <p><span>Tags:</span> Care, Garden, Maintenance</p>
+                                </div>
+                                <div class="right pull-right">
+                                    <ul class="sociallinks-style-one float-left fix">
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    </ul>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End tag box-->
+                    
+                    <!--Start author box-->
+                    <div class="author-box">
+                        <div class="inner-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="img-holder">
+                                        <img src="{% static 'backend/images/blog/author.png' %}" alt="Awesome Image">
+                                    </div>
+                                    <div class="text-holder">
+                                        <h3>Christine Eve</h3>
+                                        <p>Lorem Ipsum is simply dummy text of the rinting and typesetting been the industry standard dummy text ever sincer nullam condimentum purus.</p>
+                                        <a href="#">View All Posts</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End author box-->
+                    
+                    <!--Start comment box-->
+                    <div class="inner-comment-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <h3>Read Comments</h3>
+                                </div>
+                                <!--Start single comment box-->
+                                <div class="single-comment-box">
+                                    <div class="img-holder">
+                                        <img src="{% static 'backend/images/blog/comment-1.jpg' %}" alt="Awesome Image">
+                                    </div>
+                                    <div class="text-holder">
+                                        <div class="top">
+                                            <div class="name-date pull-left">
+                                                <h3>David Martin</h3>
+                                                <span>20 Oct, 2018   -   4:00 pm</span>
+                                            </div>
+                                            <div class="reply-button pull-right">
+                                                <a class="btn-one" href="#">Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="text">
+                                            <p>Lorem Ipsum is simply dummy text of the rinting and typesetting been the industry standard dummy text ever sincer condimentum purus. In non ex at ligula fringilla lobortis et aliquet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End single comment box-->
+                                <!--Start single comment box-->
+                                <div class="single-comment-box">
+                                    <div class="img-holder">
+                                        <img src="{% static 'backend/images/blog/comment-2.jpg' %}" alt="Awesome Image">
+                                    </div>
+                                    <div class="text-holder">
+                                        <div class="top">
+                                            <div class="name-date pull-left">
+                                                <h3>Jessica Brown</h3>
+                                                <span>15 Oct, 2018   -   2:00 pm</span>
+                                            </div>
+                                            <div class="reply-button pull-right">
+                                                <a class="btn-one" href="#">Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="text">
+                                            <p>Lorem Ipsum is simply dummy text of the rinting and typesetting been the industry standard dummy text ever sincer condimentum purus. In non ex at ligula fringilla lobortis et aliquet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End single comment box-->
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <!--End comment box-->
+                    
+                    <!--Start add comment box-->
+                    <div class="add-comment-box">
+                        <div class="title">
+                            <h3>Add Your Comments</h3>
+                        </div>
+                        <form id="add-comment-form" action="#">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" name="fname" value="" placeholder="Full name" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" name="form_email" value="" placeholder="Email address" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" name="form_phn" value="" placeholder="Phone number" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" name="form_sub" value="" placeholder="Subject" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <textarea name="message" placeholder="Write here message" required=""></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn-one" type="submit">Submit Comment</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--End add comment box-->
+                </div>
+            </div>
+            
+            <!--Start sidebar Wrapper-->
+            <div class="col-xl-4 col-lg-5 col-md-9 col-sm-12">
+                <div class="sidebar-wrapper">
+                    <!--Start single sidebar-->
+                    <div class="sidebar-search-box">
+                        <form class="search-form" action="#">
+							<input placeholder="Search here..." type="text">
+							<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+						</form>
+                    </div>
+                    <!--End single sidebar-->
+                    <!--Start single sidebar-->
+                    <div class="single-sidebar">
+                        <div class="sec-title">
+                            <h3>Latest Posts</h3>
+                        </div>
+                        <ul class="lat-posts">
+                            <li>
+                                <div class="img-holder">
+                                    <img src="{% static 'backend/images/sidebar/lat-post-1.jpg' %}" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="content">
+                                                <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="title-holder">
+                                    <h5 class="post-title"><a href="#">Which London areas do<br> you serve?</a></h5>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="{% static 'backend/images/sidebar/lat-post-2.jpg' %}" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="content">
+                                                <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="title-holder">
+                                    <h5 class="post-title"><a href="#">Do you supply original<br> parts for carpeting</a></h5>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="{% static 'backend/images/sidebar/lat-post-3.jpg' %}" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="content">
+                                                <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="title-holder">
+                                    <h5 class="post-title"><a href="#">Reliable work from<br> experts of their trade</a></h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--End single sidebar-->
+                    <!--Start single sidebar-->
+                    <div class="single-sidebar">
+                        <div class="sec-title">
+                            <h3>Categories</h3>
+                        </div>
+                        <ul class="categories clearfix">
+                            <li><a href="ser-gutter-cleaning.html">Carpet</a></li>
+                            <li><a href="ser-pressure-washing.html">Cleaning</a></li>
+                            <li><a href="ser-window-cleaning.html">Rugs</a></li>
+                            <li><a href="ser-roof-cleaning.html">Protection</a></li>
+                            <li><a href="ser-window-tinting.html">Repairing</a></li>
+                        </ul>
+                    </div>
+                    <!--End single sidebar-->
+                    <!--Start single-sidebar-->
+                    <div class="single-sidebar last-child">
+                        <div class="sec-title">
+                            <h3>Tag Cloud</h3>
+                        </div>
+                        <ul class="popular-tag">
+                            <li><a href="#">carpet</a></li>
+                            <li><a href="#">repairing</a></li>
+                            <li><a href="#">cleaning</a></li>
+                            <li><a href="#">rugs</a></li>
+                            <li><a href="#">fireline</a></li>
+                            <li><a href="#">new parts</a></li>
+                            <li><a href="#">clean</a></li>
+                            <li><a href="#">professional</a></li>
+                            <li><a href="#">carpeting</a></li>
+                        </ul>      
+                    </div> 
+                    <!--End single-sidebar-->
+                </div>    
+            </div>
+            <!--End Sidebar Wrapper-->
+            
+        </div>
+    </div>
+</section> 
+<!--End blog single area-->   
+
+<!--Start footer area-->
+{% include "layouts/main-footer.html" %} 
+<!--End footer area-->
+
+<!--Start footer bottom area-->
+<section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="inner text-center clearfix">
+                    <div class="copyright-text">
+                        <p>© Copyright 2019 by <a href="#">fouens.com</a></p>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>    
+</section>
+<!--End footer bottom area-->  
+
+</div>  
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+{% include "js-files.html" %}
+
+</body>
+
+<!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/news-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:06:46 GMT -->
+</html>

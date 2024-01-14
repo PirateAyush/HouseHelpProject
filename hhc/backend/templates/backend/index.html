@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:05:47 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<title>Home One || Fouens || Responsive HTML 5 Template</title>
+
+	<!-- responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+	<!-- master stylesheet -->
+	<link rel="stylesheet" href="{% static 'backend/css/style.css' %}">
+	<!-- Responsive stylesheet -->
+	<link rel="stylesheet" href="{% static 'backend/css/responsive.css' %}">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'backend/images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'backend/images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'backend/images/favicon/favicon-16x16.png' %}" sizes="16x16">
+
+    <!-- Fixing Internet Explorer-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    
+</head>
+
+<body>
+<div class="boxed_wrapper">
+
+<div class="preloader"></div> 
+
+<!--Start Main Header-->
+{% include "layouts/main-header.html" %}
+<!--End Main Header-->   
+                            
+<!--Home Slider One-->
+<section class="home-slider-one">
+    <div class="silder-right-content" style="background-image:url({% static 'backend/images/slides/slide-right-bg.png' %});">
+        <ul class="slider-social-links fix">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Linkedin</a></li>
+        </ul>
+        <div class="slider-contact-info">
+            <div class="inner">
+                <div class="icon-holder">
+                    <span class="icon-phone-call"></span>
+                </div>
+                <div class="title-holder">
+                    <h3>Get a free estimate</h3>
+                    <h1>9324843109</h1>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="home-slider owl-theme owl-carousel banner-carousel-four">
+        <!--Slide-->
+        <div class="slide-item" style="background-image:url({% static 'backend/images/slides/v1-1.jpg'%});">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="shape"><h3>Committed to top quality services</h3></div>
+                    <h1 class="title">Professional<br> House Help<br> Services</h1>
+                    <div class="link-box"><a href="#registration_and_explore" class="btn-one">Registart &amp; Explore</a></div>
+                </div>
+            </div>
+        </div>
+        <!--Slide-->
+        <div class="slide-item" style="background-image:url({% static 'backend/images/slides/v1-2.jpg'%});">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="shape"><h3>Committed to top quality services</h3></div>
+                    <h1 class="title">Professional<br> House Help<br> Services</h1>
+                    <div class="link-box"><a href="#registration_and_explore" class="btn-one">Registart &amp; Explore</a></div>
+                </div>
+            </div>
+        </div>
+        <!--Slide-->
+        <div class="slide-item" style="background-image:url({% static 'backend/images/slides/v1-3.jpg'%});">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="shape"><h3>Committed to top quality services</h3></div>
+                    <h1 class="title">Professional<br> House Help<br> Services</h1>
+                    <div class="link-box"><a href="#registration_and_explore" class="btn-one">Registart &amp; Explore</a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--End Home Slider One-->
+
+<!--Start Welcome Area-->
+<section class="welcome-area secpd1">
+    <div class="container">
+        <div class="sec-title text-center">
+            <h3>Our Introduction</h3>
+            <div class="title">Welcome to House Help Connect</div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="welcome-image-box clearfix">
+                    <div class="image-box">
+                        <img src="{% static 'backend/images/resources/welcome.jpg' %}" alt="Awesome Image">
+                    </div>
+                    <div class="image-thumb1">
+                        <img src="{% static 'backend/images/resources/welcome-thumb-1.jpg' %}" alt="Awesome Image">
+                    </div>
+                    <div class="image-thumb2">
+                        <img src="{% static 'backend/images/resources/welcome-thumb-2.jpg' %}" alt="Awesome Image">
+                    </div>
+                    <div class="icon-box">
+                        <div class="inner">
+                            <img src="{% static 'backend/images/icon/2.png' %}" alt="Icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="welcome-content-box">
+                    <div class="top">
+                        <div class="icon">
+                            <img src="{% static 'backend/images/icon/1.png' %}" alt="Icon">
+                        </div>
+                        <div class="title">
+                            <h2>Newly established company in house help</h2>
+                        </div>
+                    </div>
+                    <div class="text">
+                        {% comment %} <p>There are many variations of passag of lorem ipsum available but the majority have suffered alteration in some form by injected humour randomised words which don't look even slightly believable.<br><br> You need to be sure there isn't anything embarrassing hidden in the middle of text. All the lorem ipsum generators on the Internet. All the generators on the Internet tend to repeat.
+                        </p> {% endcomment %}
+                        <p>At House Help Connect, we understand that creating a comfortable and functional living space requires more than just bricks and mortar. It's about turning a house into a home, and we're here to make that journey smoother for you. Whether you're a homeowner looking for reliable services or a professional seeking opportunities, our platform is designed to connect and simplify the world of home assistance.<br><br>
+                           Our mission is to bridge the gap between those seeking assistance and the skilled professionals who can provide it. We believe that everyone deserves a home that suits their lifestyle, and we're here to facilitate that by offering a comprehensive range of services. From skilled tradespeople to expert advice, House Help Connect is your go-to destination for all things related to creating, maintaining, and enhancing your living space.
+                        </p>
+
+                    </div>
+                    <div class="bottom">
+                        <div class="video-holder-box">
+                            <div class="img-holder">
+                                <img src="{% static 'backend/images/resources/video-gallery.jpg' %}" alt="Awesome Image">
+                                <div class="icon-holder">
+                                    <div class="icon">
+                                        <div class="inner">
+                                            <a class="html5lightbox" title="Fouens Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+                                                <span class="flaticon-play-button"></span>
+                                            </a>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>    
+                        </div> 
+                        <div class="title-holder-box">
+                            <h4>Click on this video to check how<br> we work with <span>Our Clients</span></h4>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Welcome Area-->
+
+<!--Start services style1 area-->
+{% include "layouts/main-services.html" %}
+<!--End services style1 area-->
+
+<!--Start Working Steps area-->
+{% include "layouts/how-it-works.html" %}
+<!--End Working Steps area-->
+
+<!--Start Quote area-->
+<section class="quote-area">
+    <div class="video-gallery-bg">
+        <div class="video-holder-box">
+            <div class="img-holder">
+                <img src="{% static 'backend/images/resources/video-gallery-bg.jpg'%}" alt="Awesome Image">
+                <div class="icon-holder">
+                    <div class="icon">
+                        <div class="inner text-center">
+                            <a class="html5lightbox" title="Fouens Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+                                <span class="flaticon-play-button"></span>
+                            </a>
+                            <h3>We’re a Leading House Help Connect Company</h3>
+                            <h1>We bring professionalism <br>to everything we do</h1>
+                        </div>   
+                    </div>
+                </div>
+            </div>    
+        </div>     
+    </div>
+    {% include "layouts/main-register.html" %}
+</section>
+<!--End Quote area-->
+
+<!--Testimonial Section-->
+{% include "layouts/main-testimonial.html" %}
+<!--End Testimonial Section-->  
+
+<!--Start choose area--> 
+{% include "layouts/main-why-choose-us.html" %}    
+<!--End choose area-->
+
+<!--Start latest blog area-->
+{% include "layouts/index-blog.html" %}
+<!--End latest blog area-->
+ 
+<!--Start Brand area-->  
+<!--End Brand area-->  
+  
+<!--Start footer area-->  
+{% include "layouts/main-footer.html" %}   
+<!--End footer area-->
+
+<!--Start footer bottom area-->
+<section class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="inner text-center clearfix">
+                    <div class="copyright-text">
+                        <p>© Copyright 2019 by <a href="#">fouens.com</a></p>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>    
+</section>
+<!--End footer bottom area-->   
+
+</div>  
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+{% include "js-files.html"%}
+
+<!--Revolution Slider-->
+<script src="{% static 'backend/plugins/revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.carousel.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'backend/plugins/revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script src="{% static 'backend/js/main-slider-script.js' %}"></script>
+
+<!-- thm custom script -->
+<script src="{% static 'backend/js/custom.js' %}"></script>
+
+
+
+</body>
+
+</html>

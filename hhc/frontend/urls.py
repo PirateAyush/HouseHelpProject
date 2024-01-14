@@ -23,9 +23,10 @@ urlpatterns = [
     path("",views.index, name="Home"),
     path("about/",views.about,name="AboutUs"),
     path("user/",views.user,name="user"),
+    path("user/<int:user_id>/",views.userSpecific,name="userSpecific"),
     path("prices/",views.prices,name="Prices"),
     path("whyUs/",views.whyUs,name="WhyUs"),
-    path("basic-form/",views.basic,name="Basic"),
-    path("background-verification-form/",views.backgroundVerification,name="BackgroundVerification"),
-    path("advance-form/",views.advance,name="Advance")
+    path("user/<int:user_id>/basic-form/",views.basic,name="Basic"),
+    path("user/<int:user_id>/background-verification-form/",views.backgroundVerification,name="BackgroundVerification"),
+    path("user/<int:user_id>/advance-form/",views.advance,name="Advance")
 ]
