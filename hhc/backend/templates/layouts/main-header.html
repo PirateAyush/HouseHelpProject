@@ -1,0 +1,102 @@
+{% load static %}
+
+<header class="main-header stricky">
+    <div class="main-box">
+        <div class="inner-container clearfix">
+            <div class="logo-box">
+                <a href="{% static 'backend/index-2.html' %}">
+                    <img src="{% static 'backend/images/resources/logo.png' %}" alt="Awesome Logo">
+                </a>
+            </div>
+            <div class="nav-outer clearfix">
+                <nav class="main-menu clearfix">
+                    <div class="navbar-header clearfix">   	
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse clearfix">
+                        <ul class="navigation clearfix">
+                            <li class="dropdown current"><a href="{% url "Home" %}">Home</a>
+                            </li>
+                            <li class="dropdown current"><a href="{% url 'AboutUs' %}">About</a>
+                            </li>
+                            <li class="dropdown"><a href="{% url 'Services' %}">Services</a>
+                                <ul>
+                                    <li><a href="{% static 'backend/ser-carpet-cleaning.html' %}">Cleaning</a></li>
+                                    <li><a href="{% static 'backend/ser-dust-removal.html' %}">Cooking</a></li>
+                                    <li><a href="{% static 'backend/ser-damage-repair.html' %}">Laundry &amp; Washing</a></li>
+                                    <li><a href="{% static 'backend/ser-carpet-protection.html' %}">Baby Sitting </a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown current"><a href="{% url 'WhyChooseUs' %}">Why Choose Us</a>
+                            </li>
+                            <li class="dropdown"><a href="#">Pages</a>
+                                <ul>
+                                    <li><a href="{% url 'OurTeam' %}">Our Team</a></li>
+                                    <li><a href="{% url 'OurGallery' %}">Our Gallery</a></li>
+                                    {% comment %} <li><a href="{% static 'backend/error.html' %}">404 Error</a></li> {% endcomment %}
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="{% static 'backend/news.html' %}">Blog</a>
+                                <ul>
+                                    <li><a href="{% url 'BlogPosts' %}">Latest News</a></li>
+                                    <li><a href="{% url 'AddBlogPosts' %}">News Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'Contact' %}">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>      
+            </div>
+            <div class="header-right clearfix">
+                <div class="opening-time">
+                    <p><i class="fa fa-clock-o" aria-hidden="true"></i>9:00 am to 6:00 pm</p>
+                </div>
+                <div class="button">
+                    <a class="btn-two" href="#" data-toggle="modal" data-target="#LoginModal"><span>Login</span></a>
+                </div>
+            </div>  
+        </div>
+    </div>
+</header>
+
+<!-- Modal Section-->
+    <!--1. Login Modal    -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method="POST" action="{% url 'user' %}">
+              {% csrf_token %}
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-1 form-group"></div>
+                  <div class="col-md-10 form-group">
+                      <input type="text" class="form-control" id="uname" name="uname" placeholder="User Name" required>
+                  </div>
+                  <div class="col-md-1 form-group"></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-1 form-group"></div>
+                  <div class="form-group col-md-10">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Create Password" title="Create Password" required>
+                  </div>
+                  <div class="col-md-1 form-group"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="loginBTN">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

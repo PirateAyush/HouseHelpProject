@@ -1,0 +1,107 @@
+{% load static %}
+<div class="container inner-content" id="registration_and_explore">
+    <div class="row">
+         <div class="col-xl-8 col-lg-8">
+            <div class="quote-form">
+                <div class="title"><h2>Register To Explore</h2></div>
+                <div class="inner-quote-box">
+                    <form id="contact-info-form" name="contact_info_form" class="default-form" action="#" method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-box">
+                                    <select class="selectmenu">
+                                        <option selected="selected">Select Reason For Contacting</option>
+                                        <option value="1">I have a requirement for a maid</option>
+                                        <option value="2">I need job</option>
+                                        <option value="3">Other Reason</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_name" value="" placeholder="Your first name" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_last_name" value="" placeholder="Your last name" required="">
+                                </div>
+                            </div>
+                            {% comment %} <div class="col-md-6">
+                                <div class="input-box"> 
+                                    <input type="email" name="form_email" value="" placeholder="Email address" required="">
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="row">
+                            {% comment %} <div class="col-md-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_phn" value="" placeholder="Phone number">
+                                </div>
+                            </div> {% endcomment %}
+                            <div class="col-md-6">
+                                <div class="input-box"> 
+                                    <input type="email" name="form_email" value="" placeholder="Email address" required="">
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="input-box"> 
+                                    <input type="text" name="form_pin" value="" placeholder="Pin code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-box">
+                                    <input type="text" name="form_phn" value="" placeholder="Phone number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-box">
+                                    <textarea name="form_address" placeholder="Write here address" required=""></textarea> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_username" value="" placeholder="Your username" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_password" value="" placeholder="Your password" required="">
+                                </div>
+                            </div>
+                            {% comment %} <div class="col-md-6">
+                                <div class="input-box"> 
+                                    <input type="email" name="form_email" value="" placeholder="Email address" required="">
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn-one" type="submit">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+            <div class="quote-right-box">
+                <div class="image-holder">
+                    <img src="{% static 'backend/images/resources/quote.jpg' %}" alt="Awesome Image">
+                </div>
+                <div class="text-holder">
+                    <h4>Fouens is trusted by more than 8,700 clients.</h4>
+                    <a href="#">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

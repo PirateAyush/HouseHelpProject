@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:06:46 GMT -->
 <head>
 	<meta charset="UTF-8">
@@ -12,13 +12,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
 	<!-- master stylesheet -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{%static 'backend/css/style.css' %}">
 	<!-- Responsive stylesheet -->
-	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="{%static 'backend/css/responsive.css' %}">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="{%static 'backend/images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{%static 'backend/images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{%static 'backend/images/favicon/favicon-16x16.png' %}" sizes="16x16">
 
     <!-- Fixing Internet Explorer-->
     <!--[if lt IE 9]>
@@ -34,72 +34,7 @@
 <div class="preloader"></div> 
 
 <!--Start Main Header-->
-<header class="main-header stricky">
-    <div class="main-box">
-        <div class="inner-container clearfix">
-            <div class="logo-box">
-                <a href="index-2.html">
-                    <img src="images/resources/logo.png" alt="Awesome Logo">
-                </a>
-            </div>
-            <div class="nav-outer clearfix">
-                <nav class="main-menu clearfix">
-                    <div class="navbar-header clearfix">   	
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse collapse clearfix">
-                        <ul class="navigation clearfix">
-                            <li class="dropdown"><a href="index-2.html">Home</a>
-                                <ul>
-                                    <li><a href="index-2.html">Home Page 01</a></li>
-                                    <li><a href="index-3.html">Home Page 02</a></li>
-                                </ul>  
-                            </li>
-                            <li class="dropdown"><a href="services.html">Services</a>
-                                <ul>
-                                    <li><a href="ser-carpet-cleaning.html">Carpet Cleaning</a></li>
-                                    <li><a href="ser-dust-removal.html">Dust Removal</a></li>
-                                    <li><a href="ser-damage-repair.html">Damage Repair</a></li>
-                                    <li><a href="ser-carpet-protection.html">Carpet Protection</a></li>
-                                    <li><a href="ser-sanitize-carpet.html">Sanitize Carpet</a></li>
-                                    <li><a href="ser-carpet-rinse.html">Carpet Rinse</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="why-choose.html">Why Choose Us</a></li>
-                                    <li><a href="team.html">Our Team</a></li>
-                                    <li><a href="gallery.html">Our Gallery</a></li>
-                                    <li><a href="error.html">404 Error</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="news.html">Blog</a>
-                                <ul>
-                                    <li><a href="news.html">Latest News</a></li>
-                                    <li><a href="news-single.html">News Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="current"><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </nav>      
-            </div>
-            <div class="header-right clearfix">
-                <div class="opening-time">
-                    <p><i class="fa fa-clock-o" aria-hidden="true"></i>Mon to Fri 9:00 am to 6:00 pm</p>
-                </div>
-                <div class="button">
-                    <a class="btn-two" href="#"><span>Request a</span> Quote</a>
-                </div>
-            </div>  
-        </div>
-    </div>
-</header>
+{% include "layouts/main-header.html" %}
 <!--End Main Header-->   
 
 <!--Start breadcrumb area-->     
@@ -110,7 +45,7 @@
                 <div class="inner-content text-center clearfix">
                     <div class="breadcrumb-menu">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="{% url 'Home' %}">Home</a></li>
                             <li class="active">Contact</li>
                         </ul>    
                     </div>
@@ -136,20 +71,22 @@
                     </div>
                     <div class="inner-content">
                         <div class="text">
-                            <p>There are many variations of passag of lorem ipsum available but the majority have suffered alteration in some form by injected humour.</p>
+                            <p>
+                                Connect with us for reliable house help services. Your satisfaction is our priority. Reach out today for expert assistance and a comfortable home environment.
+                            </p>
                         </div>
                         <ul>
                             <li>
                                 <p>Call Now</p>
-                                <span>666 888 000</span>
+                                <span>9324843109</span>
                             </li>
                             <li>
                                 <p>Send Email</p>
-                                <span>needhelp@fouens.com</span>
+                                <span>HouseHelpConnect@gmail.com</span>
                             </li>
                             <li>
                                 <p>Visit Us</p>
-                                <span>85 Road Broklyn Street, 600 New York, USA</span>
+                                <span>SJ Road, Sunmil Complex, Lower Parel, Mumbai.</span>
                             </li>
                         </ul>
                     </div>
@@ -248,15 +185,13 @@
                     <div 
                         class="google-map" 
                         id="contact-google-map" 
-                        data-map-lat="40.584160" 
-                        data-map-lng="-74.415543" 
+                        data-map-lat="18.9953" 
+                        data-map-lng="72.8258" 
                         data-icon-path="images/resources/map-marker.png" 
-                        data-map-title="Brooklyn, New York, United Kingdom" 
+                        data-map-title="Mumbai, Lower Parel York, INDIA" 
                         data-map-zoom="12" 
                         data-markers='{
-                            "marker-1": [40.584160, -74.415543, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"],
-                            "marker-3": [35.616959, -87.838852, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"]
-
+                            "marker-mumbai": [18.9953, 72.8258, "<h4>Mumbai Lower Parel</h4><p>SJ Road, Sunmil Complex, Lower Parel, Mumbai.</p>"]
                         }'>
                     </div>   
                 </div> 
@@ -371,51 +306,7 @@
 <div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<!-- main jQuery -->
-<script src="js/jquery.js"></script>
-<!-- Wow Script -->
-<script src="js/wow.js"></script>
-<!-- bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!-- bx slider -->
-<script src="js/jquery.bxslider.min.js"></script>
-<!-- Fancybox Script -->
-<script src="js/jquery.fancybox.js"></script>
-<!-- count to -->
-<script src="js/jquery.countTo.js"></script>
-<script src="js/appear.js"></script>
-<!-- owl carousel -->
-<script src="js/owl.js"></script>
-<!-- validate -->
-<script src="js/validation.js"></script>
-<!-- mixit up -->
-<script src="js/jquery.mixitup.min.js"></script>
-<!-- isotope script-->
-<script src="js/isotope.js"></script>
-<!-- Easing -->
-<script src="js/jquery.easing.min.js"></script>
-<!-- Gmap helper -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-
-<!--Gmap script-->
-<script src="js/gmaps.js"></script>
-<script src="js/map-helper.js"></script>
-<!-- jQuery ui js -->
-<script src="assets/jquery-ui-1.11.4/jquery-ui.js"></script>
-<!-- Language Switche  -->
-<script src="assets/language-switcher/jquery.polyglot.language.switcher.js"></script>
-<!-- jQuery timepicker js -->
-<script src="assets/timepicker/timePicker.js"></script>
-<!-- Bootstrap select picker js -->
-<script src="assets/bootstrap-sl-1.12.1/bootstrap-select.js"></script> 
-<!-- html5lightbox js -->                              
-<script src="assets/html5lightbox/html5lightbox.js"></script>
-
-
-
-<!-- thm custom script -->
-<script src="js/custom.js"></script>
-
+{% include "js-files.html" %}
 
 
 </body>
