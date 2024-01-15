@@ -1,4 +1,19 @@
+from django.shortcuts import render , redirect ,get_object_or_404
+from django.http import HttpResponse
 from django.shortcuts import render
+
+#Models
+from .models import *
+
+#Constants
+from frontend.constants import *
+
+#Form Imports
+from django import forms
+from django.contrib.auth import authenticate,login,logout
+
+#Messages
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -28,3 +43,8 @@ def addBlogPosts(request):
 def contact(request):
     return render(request,'backend/contact.html')
 
+def register(request):
+    if request.method == 'POST':  
+        print(request.POST.dict())
+        messages.error(request, 'Registered Successfull !')
+        return redirect('Home')

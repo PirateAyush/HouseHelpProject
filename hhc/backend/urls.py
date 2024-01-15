@@ -13,4 +13,6 @@ urlpatterns = [
     path("blogPosts",views.blogPosts, name="BlogPosts"),
     path("addBlogPosts",views.addBlogPosts, name="AddBlogPosts"),
     path("contact",views.contact, name="Contact"),
+    path("register",views.register, name="Register"),
+    
 ]
