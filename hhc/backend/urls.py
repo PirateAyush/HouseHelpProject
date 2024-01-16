@@ -14,5 +14,7 @@ urlpatterns = [
     path("addBlogPosts",views.addBlogPosts, name="AddBlogPosts"),
     path("contact",views.contact, name="Contact"),
     path("register",views.register, name="Register"),
+    path("services/<int:service_id>",views.service, name="Service"),
     
+    path("error/404",views.error_404,name="Error404"),
 ]

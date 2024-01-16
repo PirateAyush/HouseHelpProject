@@ -48,3 +48,13 @@ def register(request):
         print(request.POST.dict())
         messages.error(request, 'Registered Successfull !')
         return redirect('Home')
+
+def service(request,service_id):
+    service = get_object_or_404(Service,id=service_id)
+    params = {'service':service}
+    print(service)
+    return render(request,'backend/service-info.html',params)
+
+def error_404(request):
+
+    return render(request,'backend/error.html')
