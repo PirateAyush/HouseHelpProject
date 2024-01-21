@@ -18,7 +18,7 @@
 
     /* Add focus styling */
     .custom-input:focus {
-        border-color: #3498db;  /* Accent color on focus */
+        border-color: #e3563d;  /* Accent color on focus */
         outline: none;
     }
 
@@ -29,7 +29,7 @@
 
     /* Style for a submit button (optional) */
     .custom-submit-button {
-        background-color: #3498db;
+        background-color: #e3563d;
         color: #fff;
         padding: 12px;
         border: none;
@@ -37,10 +37,15 @@
         cursor: pointer;
         font-size: 16px;
         transition: background-color 0.3s;
+        padding-left:50%;
+        padding-right:50%;
     }
 
     .custom-submit-button:hover {
-        background-color: #2980b9;
+        color : #e3563d;
+        background-color: white;
+        border: 1px solid #e3563d;
+        border-radius: 8px;
     }
 </style>
 
@@ -82,6 +87,7 @@
                                 <ul>
                                     <li><a href="{% url 'OurTeam' %}">Our Team</a></li>
                                     <li><a href="{% url 'OurGallery' %}">Our Gallery</a></li>
+                                    <li><a href="{% url 'RateUs' %}" target="blank">Rate Us</a></li>
                                     {% comment %} <li><a href="{% static 'backend/error.html' %}">404 Error</a></li> {% endcomment %}
                                 </ul>
                             </li>
@@ -114,7 +120,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+              <h5 class="modal-title" id="LoginModalLabel" style="color:#e3563d;">Login</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -137,10 +143,18 @@
                   <div class="col-md-1 form-group"></div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div class="row">
+                <div class="col-md-1 form-group">
+                </div>
+                <div class="col-md-6 form-group" style="margin-left:15px;">
+                    <button type="submit" class="custom-submit-button" id="loginBTN">Login</button>
+                </div>
+                <div class="col-md-5 form-group"></div>
+              </div>
+              {% comment %} <div class="modal-footer">
                 <button type="button" class="custom-submit-button" data-dismiss="modal" style="background-color:#a1a1a1;">Close</button>
                 <button type="submit" class="custom-submit-button" id="loginBTN">Login</button>
-              </div>
+              </div> {% endcomment %}
             </form>
           </div>
         </div>

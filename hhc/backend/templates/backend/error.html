@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <!-- Mirrored from mehedi.asiandevelopers.com/demo/html/fouens/error.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 05:06:40 GMT -->
 <head>
 	<meta charset="UTF-8">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="not-found-text">Page Not Found</div>
                     <div class="go-home-button">
-                        <a class="btn-one" href="index-2.html">Back to Home</a>
+                        <a class="btn-one" href="{% url 'Home' %}">Back to Home</a>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,14 @@
                         <i class="fa fa-close"></i>
                     </button>
                 </li>
+            {% elif message.tags == 'info' %}
+                <li{% if message.tags %} class="alert alert-primary" {% endif %}>
+                    {{ message}} 
+                    <i class="fa fa-thumbs-up"></i>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </li>
             {% else %}
                 <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
                     <i class="fa fa-check-circle"></i>
