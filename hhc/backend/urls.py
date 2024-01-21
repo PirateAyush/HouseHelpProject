@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,4 +15,9 @@ urlpatterns = [
     path("blogPosts",views.blogPosts, name="BlogPosts"),
     path("addBlogPosts",views.addBlogPosts, name="AddBlogPosts"),
     path("contact",views.contact, name="Contact"),
+    path("register",views.register, name="Register"),
+    path("services/<int:service_id>",views.service, name="Service"),
+    path("rate-us",views.rateUs, name="RateUs"),
+    
+    path("error/404",views.error_404,name="Error404"),
 ]

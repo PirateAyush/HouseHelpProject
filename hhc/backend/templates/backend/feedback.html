@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Feedback</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .feedback-form {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .star {
+            color: silver;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .selected-star {
+            color: #FFD700; /* Change this to your desired color */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form class="feedback-form" action="{% url 'RateUs' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="mb-4">Feedback Form</h2>
+
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profile-photo">Profile:</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="profile-photo" name="profile_photo">
+                    <label class="custom-file-label" for="profile-photo">Choose file</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback">Your Feedback:</label>
+                <textarea class="form-control" id="feedback" name="feedback" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <div class="rating-container" onclick="handleRating(event)">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <input type="hidden" id="selected-rating" name="rating" value="0">
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Send Feedback"></button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script>
+        function handleRating(event) {
+            if (event.target.classList.contains('star')) {
+                const stars = document.querySelectorAll('.star');
+                const selectedRating = Array.from(stars).indexOf(event.target) + 1;
+
+                // Highlight selected stars
+                stars.forEach((star, index) => {
+                    star.classList.toggle('selected-star', index < selectedRating);
+                });
+
+                // Set the selected rating in the hidden input field
+                document.getElementById('selected-rating').value = selectedRating;
+            }
+        }
+
+        function validateForm() {
+            // Add validation logic here if needed
+            return true; // Return false to prevent form submission
+        }
+    </script>
+
+</body>
+</html>

@@ -7,72 +7,31 @@
             <div class="title">Meet Professionals</div>
         </div>
         <div class="row">
-            <!--Start single item member-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1200ms">
-                    <div class="inner">
-                        <div class="img-holder">
-                            <img src="{% static 'backend/images/team/1.jpg' %}" alt="Awesome Image">
-                            <div class="overlay-content">
-                                <ul class="sociallinks-style-one fix">
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                </ul>
+
+            {% for teamMember in teamMembers%}
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <div class="single-team-member wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1200ms">
+                        <div class="inner">
+                            <div class="img-holder">
+                                <img src="/media/{{teamMember.profile}}" alt="Awesome Image" style="width: 100%; height: 400px; object-fit: cover;">
+                                <div class="overlay-content">
+                                    <ul class="sociallinks-style-one fix">
+                                        <li><a href="{{teamMember.facebook_profile}}" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="name text-center">
-                        <h3>Mike Hardson</h3>
-                        <p>Supervisor</p>
-                    </div>
-                </div>
-            </div>
-            <!--End single item member-->
-            <!--Start single item member-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1200ms">
-                    <div class="inner">
-                        <div class="img-holder">
-                            <img src="{% static 'backend/images/team/2.jpg' %}" alt="Awesome Image">
-                            <div class="overlay-content">
-                                <ul class="sociallinks-style-one fix">
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
+                        <div class="name text-center">
+                            <h3>{{teamMember.first_name}} {{teamMember.last_name}}</h3>
+                            <p>{{teamMember.post}}</p>
                         </div>
                     </div>
-                    <div class="name text-center">
-                        <h3>Jessica Brown</h3>
-                        <p>President</p>
-                    </div>
                 </div>
-            </div>
-            <!--End single item member-->
-            <!--Start single item member-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="800ms" data-wow-duration="1200ms">
-                    <div class="inner">
-                        <div class="img-holder">
-                            <img src="{% static 'backend/images/team/3.jpg' %}" alt="Awesome Image">
-                            <div class="overlay-content">
-                                <ul class="sociallinks-style-one fix">
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="name text-center">
-                        <h3>Kevin Dojen</h3>
-                        <p>Manager</p>
-                    </div>
-                </div>
-            </div>
-            <!--End single item member-->
+                
+            {% endfor %}
+
         </div>
     </div>
 </section>
