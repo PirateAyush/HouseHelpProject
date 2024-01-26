@@ -32,6 +32,7 @@ class Feedback(models.Model):
     rating     = models.IntegerField(null=True, blank=True)
     feedback   = models.TextField(null=True, blank=True)
     comment    = models.TextField(null=True, blank=True)
+    blog_id    = models.ForeignKey('Blog', on_delete=models.CASCADE, related_name='feedbacks', null=True, blank=True, default="")
     type       = models.IntegerField(null=True, blank=True) #Type 1 => Feedback ; Type 2 => Comments
     status     = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
@@ -58,3 +59,16 @@ class TeamMember(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.post}"
     
+ 
+class Blog(models.Model):
+    id                 = models.AutoField(primary_key=True)
+    blog_title         = models.CharField(max_length=255)
+    blog_image         = models.ImageField(upload_to='backend/blogs/images')
+    blog_description_1 = models.TextField()
+    blog_description_2 = models.TextField()
+    uploaded_by        = models.CharField(max_length=50)
+    created_at         = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at         = models.DateTimeField(auto_now=True, null=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.blog_title} by {self.uploaded_by}"
