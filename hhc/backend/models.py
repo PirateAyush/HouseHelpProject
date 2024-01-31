@@ -3,7 +3,10 @@ from django.db import models
 #CreatedBy UpdatedBy Helper
 from django.contrib.auth import get_user_model
 CustomUser = get_user_model()
+import uuid
 
+#Constant Import
+from backend.constants import *
 
 # Create your models here.
 class Service(models.Model):
@@ -32,14 +35,19 @@ class Feedback(models.Model):
     rating     = models.IntegerField(null=True, blank=True)
     feedback   = models.TextField(null=True, blank=True)
     comment    = models.TextField(null=True, blank=True)
-    blog_id    = models.ForeignKey('Blog', on_delete=models.CASCADE, related_name='feedbacks', null=True, blank=True, default="")
+    blog_id    = models.IntegerField(null=True, blank=True, default="")
     type       = models.IntegerField(null=True, blank=True) #Type 1 => Feedback ; Type 2 => Comments
     status     = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        if self.type == FEEDBACK_TYPE_COMMENTS:
+            type =  "Comment"
+        else:
+            type = "Feedback"
+        
+        return f"{self.first_name} {self.last_name} - {type}"
 
 class TeamMember(models.Model):
     id               = models.AutoField(primary_key=True)
@@ -72,3 +80,23 @@ class Blog(models.Model):
     
     def __str__(self):
         return f"{self.blog_title} by {self.uploaded_by}"
+    
+class CustomeUser(models.Model):
+    id          = models.AutoField(primary_key=True)
+    uuid        = models.UUIDField(default=uuid.uuid4, editable=False)
+    user_name   = models.CharField(max_length = 50)
+    first_name  = models.CharField(max_length = 50)
+    last_name   = models.CharField(max_length = 50)
+    phone_number= models.IntegerField(null=True)
+    address     = models.CharField(max_length = 300,null=True)
+    pin         = models.IntegerField(null=True)
+    email       = models.EmailField(unique = True,null=True)
+    password    = models.CharField(max_length = 100,null=True)
+    reason      = models.IntegerField(null=True)
+    profile     = models.ImageField(upload_to='backend/users/profiles', null=True, blank=True)
+    status      = models.IntegerField(null=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+    updated_at  = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.user_name

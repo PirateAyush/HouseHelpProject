@@ -94,7 +94,7 @@
                             <li class="dropdown"><a href="{% static 'backend/news.html' %}">Blog</a>
                                 <ul>
                                     <li><a href="{% url 'BlogPosts' %}">Latest News</a></li>
-                                    <li><a href="{% url 'AddBlogPosts' %}">News Details</a></li>
+                                    <li><a href="{% url 'AddBlogPosts' blog_id=1 %}">News Details</a></li>
                                 </ul>
                             </li>
                             <li><a href="{% url 'Contact' %}">Contact</a></li>
@@ -125,7 +125,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form method="POST" action="{% url 'user' %}">
+            <form method="POST" action="{% url 'Login' %}">
               {% csrf_token %}
               <div class="modal-body">
                 <div class="row">

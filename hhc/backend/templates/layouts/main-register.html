@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-box">
-                                    <select class="selectmenu">
+                                    <select class="selectmenu" name="reason">
                                         <option selected="selected">Select Reason For Contacting</option>
                                         <option value="1">I have a requirement for a maid</option>
                                         <option value="2">I need job</option>
@@ -85,6 +85,16 @@
                             </div> {% endcomment %}
                         </div>
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-input" id="profile-photo" name="profile_photo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row" style="margin-top:2%;">
                             <div class="col-md-12">
                                 <button class="btn-one" type="submit">Register</button>
                             </div>
