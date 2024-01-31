@@ -70,6 +70,29 @@
                 </div>
             </div>
             <!--End single blog post-->
+
+            <!-- Dynamic Blogs-->
+            {% for blog in blogs %}
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <div class="single-blog-post mxwidth">
+                        <div class="img-holder">
+                            <img src="/media/{{blog.blog_image}}" alt="Awesome Image" style="width: 100%; height: 400px; object-fit: cover;">
+                            <div class="post-date">
+                                <h6>{{ blog.created_at|date:"M d, Y"}}</h6>
+                            </div>
+                        </div>
+                        <div class="text-holder">
+                            <h3 class="blog-title"><a href="{% url 'AddBlogPosts' blog_id=blog.id %}">{{blog.blog_title}}</a></h3> 
+                            <div class="meta-box">
+                                <ul class="meta-info">
+                                    <li><a href="#">{{blog.uploaded_by}}</a></li>
+                                    <li><a href="#">0 Comments</a></li>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </section>
