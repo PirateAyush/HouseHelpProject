@@ -45,7 +45,7 @@
                 <div class="inner-content text-center clearfix">
                     <div class="breadcrumb-menu">
                         <ul class="clearfix">
-                            <li><a href="{% url 'Home' %}">Home</a></li>
+                            <li><a href="{% url 'backend:Home' %}">Home</a></li>
                             <li class="active">Services Single</li>
                         </ul>    
                     </div>
@@ -71,10 +71,10 @@
                             <h3>Categories</h3>
                         </div>
                         <ul class="service-pages">
-                            <li class="active"><a href="{% url 'Service' service_id=1 %}">Cleaning</a></li>
-                            <li><a href="{% url 'Service' service_id=2 %}">Cooking</a></li>
-                            <li><a href="{% url 'Service' service_id=3 %}">Laundry &amp; Washing</a></li>
-                            <li><a href="{% url 'Service' service_id=4 %}">Baby Sitting </a></li>
+                            <li class="active"><a href="{% url 'backend:Service' service_id=1 %}">Cleaning</a></li>
+                            <li><a href="{% url 'backend:Service' service_id=2 %}">Cooking</a></li>
+                            <li><a href="{% url 'backend:Service' service_id=3 %}">Laundry &amp; Washing</a></li>
+                            <li><a href="{% url 'backend:Service' service_id=4 %}">Baby Sitting </a></li>
                         </ul>
                     </div>
                     <!--End Single sidebar-->

@@ -35,7 +35,7 @@
 <body>
 
     <div class="container">
-        <form class="feedback-form" action="{% url 'RateUs' %}" method="post" enctype="multipart/form-data">
+        <form class="feedback-form" action="{% url 'backend:RateUs' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h2 class="mb-4">Feedback Form</h2>
 

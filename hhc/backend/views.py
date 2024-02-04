@@ -182,11 +182,11 @@ def login(request):
         except CustomeUser.DoesNotExist:
             user = None
         if user is not None:
-            messages.success(request, 'Login Successfull!')
-            return redirect("Home")
+            # messages.success(request, 'Login Successfull!')
+            return redirect('dashboard:Dashboard',user_id=user.id)
         else:
             messages.error(request, 'Login Failed!')
-            return redirect("Home")  
+            return redirect("Home")
     
 def error_404(request):
 

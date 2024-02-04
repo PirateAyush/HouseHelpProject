@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<!-- Mirrored from www.vasterad.com/themes/hireo_21/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Jan 2024 09:21:57 GMT -->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>Hireo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/colors/blue.css' %}">
+
+<style>
+	* {
+		box-sizing: border-box;
+	  }
+	
+	  /* The actual timeline (the vertical ruler) */
+	  .custom-timeline {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+	  }
+	
+	  /* The vertical ruler */
+	  .custom-timeline::after {
+		content: '';
+		position: absolute;
+		width: 6px;
+		background-color: white;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		margin-left: -3px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	  }
+	
+	  /* Container around content */
+	  .timeline-container {
+		padding: 10px 40px;
+		position: relative;
+		background-color: inherit;
+		width: 50%;
+	  }
+	
+	  /* The circles on the timeline */
+	  .timeline-container::after {
+		content: '';
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		right: -17px;
+		background-color: white;
+		border: 4px solid #FF9F55;
+		top: 15px;
+		border-radius: 50%;
+		z-index: 1;
+	  }
+	
+	  /* Place the container to the left */
+	  .left-container {
+		left: 0;
+	  }
+	
+	  /* Place the container to the right */
+	  .right-container {
+		left: 50%;
+	  }
+	
+	  /* Add arrows to the left container (pointing right) */
+	  .left-container::before {
+		content: " ";
+		height: 0;
+		position: absolute;
+		top: 22px;
+		width: 0;
+		z-index: 1;
+		right: 30px;
+		border: medium solid white;
+		border-width: 10px 0 10px 10px;
+		border-color: transparent transparent transparent white;
+	  }
+	
+	  /* Add arrows to the right container (pointing left) */
+	  .right-container::before {
+		content: " ";
+		height: 0;
+		position: absolute;
+		top: 22px;
+		width: 0;
+		z-index: 1;
+		left: 30px;
+		border: medium solid white;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent white transparent transparent;
+	  }
+	
+	  /* Fix the circle for containers on the right side */
+	  .right-container::after {
+		left: -16px;
+	  }
+	
+	  /* The actual content */
+	  .timeline-content {
+		padding: 20px 30px;
+		background-color: white;
+		position: relative;
+		border-radius: 6px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	  }
+	
+	  /* Media queries - Responsive timeline on screens less than 600px wide */
+	  @media screen and (max-width: 600px) {
+		/* Place the timeline to the left */
+		.custom-timeline::after {
+		  left: 31px;
+		}
+	
+		/* Full-width containers */
+		.timeline-container {
+		  width: 100%;
+		  padding-left: 70px;
+		  padding-right: 25px;
+		}
+	
+		/* Make sure that all arrows are pointing leftwards */
+		.timeline-container::before {
+		  left: 60px;
+		  border: medium solid white;
+		  border-width: 10px 10px 10px 0;
+		  border-color: transparent white transparent transparent;
+		}
+	
+		/* Make sure all circles are at the same spot */
+		.left-container::after, .right-container::after {
+		  left: 15px;
+		}
+	
+		/* Make all right containers behave like the left ones */
+		.right-container {
+		  left: 0%;
+		}
+	  }
+
+</style>
+</head>
+<body class="gray">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header Container
+================================================== -->
+{% include "layouts/main-dashboard-header.html" %}
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+
+	<!-- Dashboard Sidebar
+	================================================== -->
+	{% include "layouts/main-dashboard-sidebar.html" %}
+	<!-- Dashboard Sidebar / End -->
+
+
+	<!-- Dashboard Content
+	================================================== -->
+    <div class="dashboard-content-container" data-simplebar>
+        <div class="dashboard-content-inner" >
+            
+            <!-- Dashboard Headline -->
+            <div class="dashboard-headline">
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs" class="dark">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>Dashboard</li>
+                    </ul>
+                </nav>
+            </div>
+    
+            <!-- Fun Facts Container -->
+            <div class="fun-facts-container">
+                <div class="fun-fact" data-fun-fact-color="#36bd78">
+                    <div class="fun-fact-text">
+                        <span>Fill out basic details to build your profile on our website.</span>
+                        <span>Complete your profile by providing essential information.</span>
+                    </div>
+                    <div class="fun-fact-icon"><i class="icon-material-outline-account-circle" style="color:palegreen;"></i></div>
+                </div>
+                <div class="fun-fact" data-fun-fact-color="#b81b7f">
+                    <div class="fun-fact-text">
+                        <span>Complete the Advance tab to make use of special services</span>
+                    </div>
+                    <div class="fun-fact-icon"><i class="icon-material-outline-star" style="color:gold;"></i></div>
+                </div>
+            </div>
+    
+            <br>
+            
+            <!-- Row -->
+            <!-- Row / End -->
+    
+            <!-- Row -->
+            <div class="row">
+    
+                
+                <!-- Dashboard Box -->
+                {% comment %} <div class="col-xl-6">
+                    <div class="dashboard-box">
+                        <div class="headline">
+                            <h3><i class="icon-material-baseline-notifications-none"></i> Notifications</h3>
+                            <button class="mark-as-read ripple-effect-dark" data-tippy-placement="left" title="Mark all as read">
+                                    <i class="icon-feather-check-square"></i>
+                            </button>
+                        </div>
+                        <div class="content">
+                            <ul class="dashboard-box-list">
+                                <li>
+                                    <span class="notification-icon"><i class="icon-material-outline-group"></i></span>
+                                    <span class="notification-text">
+                                        <strong>Michael Shannah</strong> applied for a job <a href="#">Full Stack Software Engineer</a>
+                                    </span>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="#" class="button ripple-effect ico" title="Mark as read" data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="notification-icon"><i class=" icon-material-outline-gavel"></i></span>
+                                    <span class="notification-text">
+                                        <strong>Gilber Allanis</strong> placed a bid on your <a href="#">iOS App Development</a> project
+                                    </span>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="#" class="button ripple-effect ico" title="Mark as read" data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="notification-icon"><i class="icon-material-outline-autorenew"></i></span>
+                                    <span class="notification-text">
+                                        Your job listing <a href="#">Full Stack Software Engineer</a> is expiring
+                                    </span>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="#" class="button ripple-effect ico" title="Mark as read" data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="notification-icon"><i class="icon-material-outline-group"></i></span>
+                                    <span class="notification-text">
+                                        <strong>Sindy Forrest</strong> applied for a job <a href="#">Full Stack Software Engineer</a>
+                                    </span>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="#" class="button ripple-effect ico" title="Mark as read" data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="notification-icon"><i class="icon-material-outline-rate-review"></i></span>
+                                    <span class="notification-text">
+                                        <strong>David Peterson</strong> left you a <span class="star-rating no-stars" data-rating="5.0"></span> rating after finishing <a href="#">Logo Design</a> task
+                                    </span>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="#" class="button ripple-effect ico" title="Mark as read" data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+    
+                <!-- Dashboard Box -->
+                {% comment %} <div class="col-xl-6">
+                    <div class="dashboard-box">
+                        <div class="headline">
+                            <h3><i class="icon-material-outline-assignment"></i> Orders</h3>
+                        </div>
+                        <div class="content">
+                            <ul class="dashboard-box-list">
+                                <li>
+                                    <div class="invoice-list-item">
+                                    <strong>Professional Plan</strong>
+                                        <ul>
+                                            <li><span class="unpaid">Unpaid</span></li>
+                                            <li>Order: #326</li>
+                                            <li>Date: 12/08/2019</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="pages-checkout-page.html" class="button">Finish Payment</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="invoice-list-item">
+                                    <strong>Professional Plan</strong>
+                                        <ul>
+                                            <li><span class="paid">Paid</span></li>
+                                            <li>Order: #264</li>
+                                            <li>Date: 10/07/2019</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="pages-invoice-template.html" class="button gray">View Invoice</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="invoice-list-item">
+                                    <strong>Professional Plan</strong>
+                                        <ul>
+                                            <li><span class="paid">Paid</span></li>
+                                            <li>Order: #211</li>
+                                            <li>Date: 12/06/2019</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="pages-invoice-template.html" class="button gray">View Invoice</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="invoice-list-item">
+                                    <strong>Professional Plan</strong>
+                                        <ul>
+                                            <li><span class="paid">Paid</span></li>
+                                            <li>Order: #179</li>
+                                            <li>Date: 06/05/2019</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="buttons-to-right">
+                                        <a href="pages-invoice-template.html" class="button gray">View Invoice</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+    
+            </div>
+            <!-- Row / End -->
+            <!-- Footer -->
+            {% include 'layouts/main-dashboard-footer.html' %}
+            <!-- Footer / End -->
+        </div>
+    </div>
+	<!-- Dashboard Content / End -->
+
+</div>
+<!-- Dashboard Container / End -->
+
+</div>
+<!-- Wrapper / End -->
+
+<!-- Scripts
+================================================== -->
+{% include "js-files.html" %}
+<!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
+<script>
+// Snackbar for user status switcher
+$('#snackbar-user-status label').click(function() { 
+	Snackbar.show({
+		text: 'Your status has been changed!',
+		pos: 'bottom-center',
+		showAction: false,
+		actionText: "Dismiss",
+		duration: 3000,
+		textColor: '#fff',
+		backgroundColor: '#383838'
+	}); 
+}); 
+</script>
+
+<!-- Chart.js // documentation: http://www.chartjs.org/docs/latest/ -->
+<script>
+	Chart.defaults.global.defaultFontFamily = "Nunito";
+	Chart.defaults.global.defaultFontColor = '#888';
+	Chart.defaults.global.defaultFontSize = '14';
+
+	var ctx = document.getElementById('chart').getContext('2d');
+
+	var chart = new Chart(ctx, {
+		type: 'line',
+
+		// The data for our dataset
+		data: {
+			labels: ["January", "February", "March", "April", "May", "June"],
+			// Information about the dataset
+	   		datasets: [{
+				label: "Views",
+				backgroundColor: 'rgba(42,65,232,0.08)',
+				borderColor: '#2a41e8',
+				borderWidth: "3",
+				data: [196,132,215,362,210,252],
+				pointRadius: 5,
+				pointHoverRadius:5,
+				pointHitRadius: 10,
+				pointBackgroundColor: "#fff",
+				pointHoverBackgroundColor: "#fff",
+				pointBorderWidth: "2",
+			}]
+		},
+
+		// Configuration options
+		options: {
+
+		    layout: {
+		      padding: 10,
+		  	},
+
+			legend: { display: false },
+			title:  { display: false },
+
+			scales: {
+				yAxes: [{
+					scaleLabel: {
+						display: false
+					},
+					gridLines: {
+						 borderDash: [6, 10],
+						 color: "#d8d8d8",
+						 lineWidth: 1,
+	            	},
+				}],
+				xAxes: [{
+					scaleLabel: { display: false },  
+					gridLines:  { display: false },
+				}],
+			},
+
+		    tooltips: {
+		      backgroundColor: '#333',
+		      titleFontSize: 13,
+		      titleFontColor: '#fff',
+		      bodyFontColor: '#fff',
+		      bodyFontSize: 13,
+		      displayColors: false,
+		      xPadding: 10,
+		      yPadding: 10,
+		      intersect: false
+		    }
+		},
+
+
+});
+
+</script>
+
+</body>
+
+<!-- Mirrored from www.vasterad.com/themes/hireo_21/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Jan 2024 09:21:57 GMT -->
+</html>

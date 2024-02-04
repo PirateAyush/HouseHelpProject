@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'frontend.apps.FrontendConfig',
     'backend',
+    'dashboard'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL  = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# Set the age of session cookies, in seconds
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+# Set the name of the session cookie
+SESSION_COOKIE_NAME = 'my_session_cookie'
+# Use secure cookies (only send cookies over HTTPS)
+SESSION_COOKIE_SECURE = True

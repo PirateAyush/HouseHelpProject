@@ -69,35 +69,35 @@
                     </div>
                     <div class="navbar-collapse collapse clearfix">
                         <ul class="navigation clearfix">
-                            <li class="dropdown current"><a href="{% url "Home" %}">Home</a>
+                            <li class="dropdown current"><a href="{% url "backend:Home" %}">Home</a>
                             </li>
-                            <li class="dropdown current"><a href="{% url 'AboutUs' %}">About</a>
+                            <li class="dropdown current"><a href="{% url 'backend:AboutUs' %}">About</a>
                             </li>
-                            <li class="dropdown"><a href="{% url 'Services' %}">Services</a>
+                            <li class="dropdown"><a href="{% url 'backend:Services' %}">Services</a>
                                 <ul>
-                                    <li><a href="{% url 'Service' service_id=1 %}">Cleaning</a></li>
-                                    <li><a href="{% url 'Service' service_id=2 %}">Cooking</a></li>
-                                    <li><a href="{% url 'Service' service_id=3 %}">Laundry &amp; Washing</a></li>
-                                    <li><a href="{% url 'Service' service_id=4 %}">Baby Sitting </a></li>
+                                    <li><a href="{% url 'backend:Service' service_id=1 %}">Cleaning</a></li>
+                                    <li><a href="{% url 'backend:Service' service_id=2 %}">Cooking</a></li>
+                                    <li><a href="{% url 'backend:Service' service_id=3 %}">Laundry &amp; Washing</a></li>
+                                    <li><a href="{% url 'backend:Service' service_id=4 %}">Baby Sitting </a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown current"><a href="{% url 'WhyChooseUs' %}">Why Choose Us</a>
+                            <li class="dropdown current"><a href="{% url 'backend:WhyChooseUs' %}">Why Choose Us</a>
                             </li>
                             <li class="dropdown"><a href="#">Pages</a>
                                 <ul>
-                                    <li><a href="{% url 'OurTeam' %}">Our Team</a></li>
-                                    <li><a href="{% url 'OurGallery' %}">Our Gallery</a></li>
-                                    <li><a href="{% url 'RateUs' %}" target="blank">Rate Us</a></li>
+                                    <li><a href="{% url 'backend:OurTeam' %}">Our Team</a></li>
+                                    <li><a href="{% url 'backend:OurGallery' %}">Our Gallery</a></li>
+                                    <li><a href="{% url 'backend:RateUs' %}" target="blank">Rate Us</a></li>
                                     {% comment %} <li><a href="{% static 'backend/error.html' %}">404 Error</a></li> {% endcomment %}
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="{% static 'backend/news.html' %}">Blog</a>
                                 <ul>
-                                    <li><a href="{% url 'BlogPosts' %}">Latest News</a></li>
-                                    <li><a href="{% url 'AddBlogPosts' blog_id=1 %}">News Details</a></li>
+                                    <li><a href="{% url 'backend:BlogPosts' %}">Latest News</a></li>
+                                    <li><a href="{% url 'backend:AddBlogPosts' blog_id=1 %}">News Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{% url 'Contact' %}">Contact</a></li>
+                            <li><a href="{% url 'backend:Contact' %}">Contact</a></li>
                         </ul>
                     </div>
                 </nav>      
@@ -125,7 +125,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form method="POST" action="{% url 'Login' %}">
+            <form method="POST" action="{% url 'backend:Login' %}">
               {% csrf_token %}
               <div class="modal-body">
                 <div class="row">
