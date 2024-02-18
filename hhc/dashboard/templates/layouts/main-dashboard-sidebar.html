@@ -15,30 +15,16 @@
             <!-- Navigation -->
             <div class="dashboard-nav">
                 <div class="dashboard-nav-inner">
-
                     <ul data-submenu-title="Start">
-                        <li class="active"><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-                        <li><a href="{% url 'dashboard:Profile' %}"><i class="icon-material-outline-account-circle"></i> Profile {% comment %}<span class="nav-tag">2</span>{% endcomment %}</a></li>
-                        <li><a href="dashboard-bookmarks.html"><i class="icon-material-outline-star-border"></i> Advance</a></li>
-                        <li><a href="dashboard-reviews.html"><i class="icon-material-outline-search"></i> Verification</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'Dashboard' and request.resolver_match.kwargs.user_id == user.id %}active{% endif %}"><a href="{% url 'dashboard:Dashboard' user_id=user.id %}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'Profile'%}active{% endif %}"><a href="{% url 'dashboard:Profile' %}"><i class="icon-material-outline-account-circle"></i> Profile</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'Advance'%}active{% endif %}"><a href="{% url 'dashboard:Advance' %}"><i class="icon-material-outline-star-border"></i> Advance</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'Verification'%}active{% endif %}"><a href="{% url 'dashboard:Verification' %}"><i class="icon-material-outline-search"></i> Verification</a></li>
                     </ul>
                     
                     <ul data-submenu-title="Organize and Manage">
-                        <li><a href="#"><i class="icon-material-outline-business-center"></i> Jobs</a>
-                            <ul>
-                                <li><a href="dashboard-manage-jobs.html">Manage Jobs <span class="nav-tag">3</span></a></li>
-                                <li><a href="dashboard-manage-candidates.html">Manage Candidates</a></li>
-                                <li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-                            </ul>	
-                        </li>
-                        <li><a href="#"><i class="icon-material-outline-assignment"></i> Tasks</a>
-                            <ul>
-                                <li><a href="dashboard-manage-tasks.html">Manage Tasks <span class="nav-tag">2</span></a></li>
-                                <li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-                                <li><a href="dashboard-my-active-bids.html">My Active Bids <span class="nav-tag">4</span></a></li>
-                                <li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-                            </ul>	
-                        </li>
+                        <li><a href="#"><i class="icon-line-awesome-heart"></i>Find Your Match</a></li>
+                        <li><a href="#"><i class="icon-line-awesome-money"></i>Salary Prediction</a></li>
                     </ul>
 
                     <ul data-submenu-title="Account">

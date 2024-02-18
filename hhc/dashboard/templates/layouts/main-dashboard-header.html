@@ -16,7 +16,7 @@
 				<nav id="navigation">
 					<ul id="responsive">
 
-						<li><a href="#">Home</a>
+						<li><a href="{% url 'dashboard:Dashboard' user_id=user.id %}">Home</a>
 						</li>
 
 						<li><a href="#">For Customers & Maids</a>
@@ -38,10 +38,10 @@
 
 						<li><a href="#" class="current">Dashboard</a>
 							<ul class="dropdown-nav">
-								<li><a href="dashboard.html">Dashboard</a></li>
-								<li><a href="dashboard-messages.html">Messages</a></li>
-								<li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
-								<li><a href="dashboard-reviews.html">Reviews</a></li>
+								<li><a href="{% url 'dashboard:Dashboard' user_id=user.id %}">Dashboard</a></li>
+								<li><a href="{% url 'dashboard:Profile' %}">Profile</a></li>
+								<li><a href="{% url 'dashboard:Advance' %}">Advance</a></li>
+								<li><a href="{% url 'dashboard:Verification' %}">Verification</a></li>
 								<li><a href="dashboard-manage-jobs.html">Jobs</a>
 									<ul class="dropdown-nav">
 										<li><a href="dashboard-manage-jobs.html">Manage Jobs</a></li>
@@ -223,7 +223,7 @@
 					<!-- Messages -->
 					<div class="header-notifications user-menu">
 						<div class="header-notifications-trigger">
-							<a href="#"><div class="user-avatar status-online"><img src="images/user-avatar-small-01.jpg" alt=""></div></a>
+							<a href="#"><div class="user-avatar status-online"><img src="/media/{{user.profile}}" alt="" style="width: 100%; height: 50px; object-fit: cover;"></div></a>
 						</div>
 
 						<!-- Dropdown -->
@@ -234,7 +234,7 @@
 
 								<!-- User Name / Avatar -->
 								<div class="user-details">
-									<div class="user-avatar status-online"><img src="images/user-avatar-small-01.jpg" alt=""></div>
+									<div class="user-avatar status-online"><img src="/media/{{user.profile}}" alt="" style="width: 100%; height: 200px; object-fit: cover;"></div>
 									<div class="user-name">
 										Tom Smith <span>Freelancer</span>
 									</div>

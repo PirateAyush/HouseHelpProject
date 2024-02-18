@@ -28,23 +28,30 @@ def index(request,user_id):
         user = None
     if user is not None:
         params = {'user':user}
-        print(user)
         messages.success(request, 'Login Successfull!')
         return render(request,'dashboard/dashboard.html',params)
     else:
         return redirect("backend:Error404")
     
 def profile(request):
-    params = {'user_id':request.session.get('user_id')}
+    user = CustomeUser.objects.get(id = request.session.get('user_id'))
+    params = {'user':user}
     return render(request,'dashboard/build-profile.html',params)
     pass
 
 def advance(request):
-    return render(request,'dashboard/build-profile.html')
-    pass
+    user = CustomeUser.objects.get(id = request.session.get('user_id'))
+    params = {'maid':True,'customer':False,'user':user}
+    return render(request,'dashboard/advance-profile.html',params)
 
 def verification(request):
-    return render(request,'dashboard/build-profile.html')
+    user = CustomeUser.objects.get(id = request.session.get('user_id'))
+    params = {'maid':True,'customer':False,'user':user}
+    if request.method == 'POST':
+        print("-------------------------------------------------------------------")
+        print(request.POST.get('adhaar'))
+        print("-------------------------------------------------------------------")
+    return render(request,'dashboard/verification-profile.html',params)
     pass
 
 

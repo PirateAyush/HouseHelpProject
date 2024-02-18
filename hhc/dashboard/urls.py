@@ -10,4 +10,6 @@ urlpatterns = [
     #POST LOGIN
     path("<int:user_id>", views.index, name="Dashboard"),
     path("profile", views.profile, name="Profile"),
+    path("advance", views.advance, name="Advance"),
+    path("verification", views.verification, name="Verification"),
 ]
