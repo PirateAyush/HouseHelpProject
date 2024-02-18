@@ -23,5 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('frontend/',include('frontend.urls')),
-    path('Home/',include('backend.urls')),
+    path('Home/',include('backend.urls', namespace='backend')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

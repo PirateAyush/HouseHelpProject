@@ -35,7 +35,7 @@ class Feedback(models.Model):
     rating     = models.IntegerField(null=True, blank=True)
     feedback   = models.TextField(null=True, blank=True)
     comment    = models.TextField(null=True, blank=True)
-    blog_id    = models.IntegerField(null=True, blank=True, default="")
+    blog_id    = models.IntegerField(null=True, blank=True, default=-1)
     type       = models.IntegerField(null=True, blank=True) #Type 1 => Feedback ; Type 2 => Comments
     status     = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)

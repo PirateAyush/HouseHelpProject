@@ -71,7 +71,7 @@ def addBlogPosts(request,blog_id):
         params = {'blog':blog,'services':services,'blogs':blogs, 'comments':comments}
         return render(request,'backend/news-single.html',params)
     except Http404:
-        return redirect('Error404')
+        return redirect('backend:Error404')
 
 def contact(request):
     return render(request,'backend/contact.html')
@@ -96,7 +96,7 @@ def register(request):
         custome_user_instance.save()
         
         messages.success(request, 'Registered Successfull !')
-        return redirect('Home')
+        return redirect('backend:Home')
 
 def service(request,service_id):
     try:
@@ -104,7 +104,7 @@ def service(request,service_id):
         params = {'service':service}
         return render(request,'backend/service-info.html',params)
     except Http404:
-        return redirect('Error404')
+        return redirect('backend:Error404')
 
 def rateUs(request):
     
@@ -133,7 +133,7 @@ def rateUs(request):
         feedback_instance.profile = profile
         feedback_instance.save()
         messages.info(request,"Thank You So Much For The Feedback!")
-        return redirect("Home")
+        return redirect("backend:Home")
     
     
     
@@ -148,7 +148,7 @@ def comment(request):
         first_name  = split_name[0] if split_name else ''
         last_name   = ' '.join(split_name[1:]) if len(split_name) > 1 else ''
         email       = request.POST.get('form_email')
-        profile     = request.POST.get('profile_photo')
+        profile     = request.FILES.get('profile_photo')
         comment     = request.POST.get('message')
         blog_id     = request.POST.get('blog_id')
         type        = FEEDBACK_TYPE_COMMENTS
@@ -166,7 +166,7 @@ def comment(request):
         feedback_instance.profile = profile
         feedback_instance.save()
         messages.success(request, 'We Received Your Comment!')
-        return redirect('AddBlogPosts',blog_id)
+        return redirect('backend:AddBlogPosts',blog_id)
         
     else:
         return render(request,'backend/error.html')
@@ -182,11 +182,11 @@ def login(request):
         except CustomeUser.DoesNotExist:
             user = None
         if user is not None:
-            messages.success(request, 'Login Successfull!')
-            return redirect("Home")
+            # messages.success(request, 'Login Successfull!')
+            return redirect('dashboard:Dashboard',user_id=user.id)
         else:
             messages.error(request, 'Login Failed!')
-            return redirect("Home")  
+            return redirect("backend:Home")
     
 def error_404(request):
 

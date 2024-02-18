@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="text-holder">
-                            <h3 class="blog-title"><a href="{% url 'AddBlogPosts' blog_id=blog.id %}">{{blog.blog_title}}</a></h3> 
+                            <h3 class="blog-title"><a href="{% url 'backend:AddBlogPosts' blog_id=blog.id %}">{{blog.blog_title}}</a></h3> 
                             <div class="meta-box">
                                 <ul class="meta-info">
                                     <li><a href="#">{{blog.uploaded_by}}</a></li>

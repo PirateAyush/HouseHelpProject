@@ -75,7 +75,7 @@
                 <div class="inner-content text-center clearfix">
                     <div class="breadcrumb-menu">
                         <ul class="clearfix">
-                            <li><a href="{% url 'Home' %}">Home</a></li>
+                            <li><a href="{% url 'backend:Home' %}">Home</a></li>
                             <li class="active">Blog Single</li>
                         </ul>    
                     </div>
@@ -187,7 +187,7 @@
                             <h3>Add Your Comments</h3>
                         </div>
                         <div class="quote-form">
-                            <form id="contact-info-form" action="{% url 'Comment' %}" method="post" name="add_comment_form" class="default-form">
+                            <form id="contact-info-form" action="{% url 'backend:Comment' %}" method="post" name="add_comment_form" class="default-form" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-12">
@@ -272,7 +272,7 @@
                                         </div>
                                     </div>
                                     <div class="title-holder">
-                                        <h5 class="post-title"><a href={% url 'AddBlogPosts' blog_id=blog.id %}>{{blog.blog_title}}</a></h5>
+                                        <h5 class="post-title"><a href={% url 'backend:AddBlogPosts' blog_id=blog.id %}>{{blog.blog_title}}</a></h5>
                                     </div>
                                 </li>
                             {% endfor %}
@@ -286,7 +286,7 @@
                         </div>
                         <ul class="categories clearfix">
                             {% for service in services %}
-                                <li><a href={% url 'Service' service_id=service.id  %}>{{service.service_title}}</a></li>
+                                <li><a href={% url 'backend:Service' service_id=service.id  %}>{{service.service_title}}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
