@@ -28,7 +28,7 @@ def index(request,user_id):
         user = None
     if user is not None:
         params = {'user':user}
-        messages.success(request, 'Login Successfull!')
+        # messages.success(request, 'Login Successfull!')
         return render(request,'dashboard/dashboard.html',params)
     else:
         return redirect("backend:Error404")

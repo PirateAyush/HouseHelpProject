@@ -5,7 +5,7 @@
             <div class="quote-form">
                 <div class="title"><h2>Register To Explore</h2></div>
                 <div class="inner-quote-box">
-                    <form id="contact-info-form" name="contact_info_form" class="default-form" action="{% url 'backend:Register' %}" method="post">
+                    <form id="contact-info-form" name="contact_info_form" class="default-form" action="{% url 'backend:Register' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-12">

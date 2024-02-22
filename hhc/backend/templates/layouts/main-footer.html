@@ -8,8 +8,8 @@
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget marbtm50">
                     <div class="footer-logo">
-                        <a href="index-2.html">
-                            <img src="{% static 'backend/images/resources/footer-logo.png'%}" alt="Awesome Logo">
+                        <a href="{% url 'backend:Home' %}">
+                            <img src="{% static 'backend/images/resources/logo.png'%}" alt="Awesome Logo">
                         </a>
                     </div>
                     <div class="company-info">
@@ -27,17 +27,17 @@
                         <h3>Explore</h3>
                     </div>
                     <ul class="explore-links">
-                        <li><a href="#">About</a></li>
+                        <li><a href="{% url 'backend:AboutUs' %}">About</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Book Online</a></li>
+                        <li><a href="{% url 'backend:WhyChooseUs' %}">Why Choose Us</a></li>
                         <li><a href="#">Plans & Pricing</a></li>
-                        <li><a href="#">How They Works</a></li>
+                        <li><a href="#how-it-works">How They Works</a></li>
                     </ul>   
                 </div>
             </div>
             <!--End single footer widget-->
             <!--Start single footer widget-->
-            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12">
+            {% comment %} <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget marleft30">
                     <div class="title">
                         <h3>Legal</h3>
@@ -50,7 +50,7 @@
                         <li><a href="#">Terms of Use</a></li>
                     </ul>  
                 </div>
-            </div>
+            </div> {% endcomment %}
             <!--End single footer widget-->
             <!--Start single footer widget-->
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
@@ -61,7 +61,7 @@
                     <ul class="contact-info">
                         <li>
                             <span>Contact us</span>
-                            <h3>666 888 000</h3>
+                            <h3>9324843109</h3>
                         </li>
                         <li>
                             <span>Request a Free Quote</span>
@@ -69,7 +69,7 @@
                         </li>
                         <li>
                             <div class="text">
-                                <p>85 Road Broklyn Street, 600<br> New York, USA</p>
+                                <p>SJ Road, Lower Parel (West),<br> Mumbai 400013, INDIA</p>
                             </div>
                         </li>
                     </ul>
