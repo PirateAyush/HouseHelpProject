@@ -22,42 +22,64 @@ from django.urls import reverse
 
 # Create your views here.
 def index(request):
-    
-    
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
     #Feedback Sub-Page Section
     ratings = Feedback.objects.filter(type=FEEDBACK_TYPE_RATE_US, status=ACTIVE, rating__gt=3).order_by('-created_at')[:3]
     blogs = Blog.objects.all()
-    params    = {'ratings':ratings, 'blogs':blogs}
+    params    = {'ratings':ratings, 'blogs':blogs, 'services':services}
+    
     return render(request,'backend/index.html',params)
 
 def whyChooseUs(request):
-    return render(request,'backend/why-choose.html')
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
+    params    = {'services':services}
+    
+    return render(request,'backend/why-choose.html',params)
 
 def aboutUs(request):
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
     
     #Team Sub-Page Section
     teamMembers=TeamMember.objects.filter(level=TEAM_MEMBER_LEVEL_HIGH)[:3]
-    params    = {'teamMembers':teamMembers}
+    params    = {'teamMembers':teamMembers, 'services':services}
+    
     return render(request,'backend/about.html',params)
 
 def services(request):
-    return render(request,'backend/services.html')
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
+    params    = {'services':services}
+    
+    return render(request,'backend/services.html',params)
 
 def ourTeam(request):
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
     
     #TeamMembers
     teamMembers=TeamMember.objects.filter(level=TEAM_MEMBER_LEVEL_HIGH)[:3]
-    params    = {'teamMembers':teamMembers}
+    params    = {'teamMembers':teamMembers, 'services':services}
+    
     return render(request,'backend/team.html',params)
 
 def ourGallery(request):
-    return render(request,'backend/gallery.html')
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
+    params    = {'services':services}
+    
+    return render(request,'backend/gallery.html',params)
 
 def blogPosts(request):
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
     
     #Blogs
     blogs = Blog.objects.all()
-    params = {'blogs':blogs}
+    params = {'blogs':blogs, 'services':services}
+    
     return render(request,'backend/news.html',params)
 
 def addBlogPosts(request,blog_id):
@@ -74,7 +96,11 @@ def addBlogPosts(request,blog_id):
         return redirect('backend:Error404')
 
 def contact(request):
-    return render(request,'backend/contact.html')
+    #Service Nav-Bar Dynamic
+    services = Service.objects.all()
+    params    = {'services':services}
+    
+    return render(request,'backend/contact.html',params)
 
 def register(request):
     if request.method == 'POST': 

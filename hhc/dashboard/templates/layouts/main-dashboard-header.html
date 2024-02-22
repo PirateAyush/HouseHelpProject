@@ -42,20 +42,20 @@
 								<li><a href="{% url 'dashboard:Profile' %}">Profile</a></li>
 								<li><a href="{% url 'dashboard:Advance' %}">Advance</a></li>
 								<li><a href="{% url 'dashboard:Verification' %}">Verification</a></li>
-								<li><a href="dashboard-manage-jobs.html">Jobs</a>
-									<ul class="dropdown-nav">
+								<li><a href="dashboard-manage-jobs.html">Find Your Match</a>
+									{% comment %} <ul class="dropdown-nav">
 										<li><a href="dashboard-manage-jobs.html">Manage Jobs</a></li>
 										<li><a href="dashboard-manage-candidates.html">Manage Candidates</a></li>
 										<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-									</ul>
+									</ul> {% endcomment %}
 								</li>
-								<li><a href="dashboard-manage-tasks.html">Tasks</a>
-									<ul class="dropdown-nav">
+								<li><a href="dashboard-manage-tasks.html">Salary Prediction</a>
+									{% comment %} <ul class="dropdown-nav">
 										<li><a href="dashboard-manage-tasks.html">Manage Tasks</a></li>
 										<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
 										<li><a href="dashboard-my-active-bids.html">My Active Bids</a></li>
 										<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-									</ul>
+									</ul> {% endcomment %}
 								</li>
 								<li><a href="dashboard-settings.html">Settings</a></li>
 							</ul>
@@ -82,7 +82,7 @@
 			<div class="right-side">
 
 				<!--  User Notifications -->
-				<div class="header-widget hide-on-mobile">
+				{% comment %} <div class="header-widget hide-on-mobile">
 					
 					<!-- Notifications -->
 					<div class="header-notifications">
@@ -214,7 +214,7 @@
 						</div>
 					</div>
 
-				</div>
+				</div> {% endcomment %}
 				<!--  User Notifications / End -->
 
 				<!-- User Menu -->
