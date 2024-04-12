@@ -138,3 +138,13 @@ SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
 SESSION_COOKIE_NAME = 'my_session_cookie'
 # Use secure cookies (only send cookies over HTTPS)
 SESSION_COOKIE_SECURE = True
+
+
+
+#Email Setup
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ayushmorebb@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'djwg oxhd tntw qrih'     # Your Gmail password or App Password

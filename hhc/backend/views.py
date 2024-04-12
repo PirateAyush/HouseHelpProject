@@ -19,6 +19,11 @@ from django.contrib import messages
 #URL Imports
 from django.urls import reverse
 
+#REGEX Imports
+import re
+
+#Mail Imports
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -117,6 +122,45 @@ def register(request):
         status             = ACTIVE
         profile            = request.FILES.get('profile_photo')
         
+        if not phone_number.isdigit() or len(phone_number) != 10:
+            messages.error(request, 'Invalid phone number. Please enter a 10-digit numeric phone number.')
+            return redirect('backend:Home')
+
+        
+        if validate_email(email):
+            email_body = f"""
+                            Dear {first_name} {last_name},
+
+                            Welcome to House Help Connect! We're excited to have you join our community and begin your journey towards finding reliable house help or securing rewarding job opportunities.
+
+                            At House Help Connect, we understand the importance of convenience, trust, and quality in household services. Whether you're a homeowner seeking reliable house help or a job seeker looking for meaningful employment, our platform is here to simplify the process and ensure a seamless experience for all.
+
+                            As a new member, you now have access to a wide range of features and services designed to meet your needs:
+
+                            - Explore our extensive database of house help profiles, each carefully curated to provide detailed information about experience, services offered, availability, and more.
+                            - Utilize our advanced search and filtering options to find the perfect match based on your specific preferences and requirements.
+                            - Benefit from our secure and user-friendly platform, equipped with state-of-the-art security measures to safeguard your personal information and ensure a safe browsing experience.
+                            - Stay updated with the latest news, tips, and insights on household management, employment trends, and more through our informative blog and newsletter.
+
+                            We're committed to providing you with the best possible experience, and we're here to support you every step of the way. If you have any questions, feedback, or concerns, please don't hesitate to reach out to our dedicated customer support team. We're always here to help!
+
+                            Thank you for choosing House Help Connect. We hope you enjoy our services and find exactly what you're looking for.
+
+                            Best regards,
+                            House Help Connect Team
+                        """
+            send_mail(
+                'House Help Connect :- Successfully Registered!',
+                 email_body,
+                'househelpconnect23@gmail.com',
+                [email,'ayushmorebb@gmail.com'],
+                fail_silently=False,
+            )
+        else:
+            messages.error(request, 'Invalid email address. Please enter a valid email address.')
+            return redirect('backend:Home')
+
+        
         custome_user_instance = CustomeUser(user_name=user_name,first_name=first_name,last_name=last_name,phone_number=phone_number,address=address,pin=pin,email=email,password=password,reason=reason,profile=profile,status=status)
         custome_user_instance.profile = profile
         custome_user_instance.save()
@@ -208,7 +252,7 @@ def login(request):
         except CustomeUser.DoesNotExist:
             user = None
         if user is not None:
-            # messages.success(request, 'Login Successfull!')
+            messages.success(request, 'Login Successfull!')
             return redirect('dashboard:Dashboard',user_id=user.id)
         else:
             messages.error(request, 'Login Failed!')
@@ -217,3 +261,13 @@ def login(request):
 def error_404(request):
 
     return render(request,'backend/error.html')
+
+
+
+def validate_email(email):
+    # Regular expression pattern for validating email addresses
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if re.match(pattern, email):
+        return True
+    else:
+        return False

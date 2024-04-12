@@ -12,4 +12,12 @@ urlpatterns = [
     path("profile", views.profile, name="Profile"),
     path("advance", views.advance, name="Advance"),
     path("verification", views.verification, name="Verification"),
+    path("find-match", views.findMatch, name="FindMatch"),
+    path("view-profile/<int:user_id>",views.viewProfile,name="ViewProfile"),
+    path("comment", views.comment, name="Comment"),
+    path("explore-maids/",views.exploreMaids,name="ExploreMaids"),
+    path("explore-customers/",views.exploreCustomers,name="ExploreCustomers"),
+    
+    
+    path("",views.logOut,name="LogOut")
 ]

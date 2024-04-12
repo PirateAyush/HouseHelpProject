@@ -6,7 +6,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Hireo</title>
+<title>HHC</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -52,14 +52,44 @@
 	{% comment %} {% include "layouts/main-dashboard-content.html" %} {% endcomment %}
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
-			
+			{% if messages %}
+            <ul class="messages" style="padding:0px;margin-bottom:30px;">
+                {% for message in messages %}
+                    {% if message.tags == 'error'  %}
+                        <li{% if message.tags %} style="border:1px solid #f5c6cb;background-color:#f8d7da;color:#721c24;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-danger" {% endif %}>
+                            <i class="fa fa-exclamation-circle"></i>
+                            {{ message}} 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% elif message.tags == 'info' %}
+                        <li{% if message.tags %} style="border:1px solid #b8daff;background-color:#cce5ff;color:#004085;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-primary" {% endif %}>
+                            {{ message}} 
+                            <i class="fa fa-thumbs-up"></i>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% else %}
+                        <li{% if message.tags %} style="border:1px solid #c3e6cb;background-color:#d4edda;color:#155724;padding:5px 10px;border-radius:8px;list-style: none;"  class="alert alert-{{ message.tags }}"{% endif %}>
+                            <i class="fa fa-check-circle"></i>
+                            {{ message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
 	
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="{% url 'dashboard:Dashboard' user_id=user.id %}">Home</a></li>
 						<li>Dashboard</li>
 					</ul>
 				</nav>
@@ -70,7 +100,6 @@
                 <div class="fun-fact" data-fun-fact-color="#efa80f">
                     <div class="fun-fact-text">
                         <span>Fill out the verification tab to ensure safety and build trust.</span>
-                        {% comment %} <h4>28</h4> {% endcomment %}
                     </div>
                     <div class="fun-fact-icon"><i class="icon-material-outline-search" style="color:cornflowerblue;"></i></div>
                 </div>
@@ -109,7 +138,7 @@
 										<input class="file-upload" type="file" accept="image/*"/>
 									</div>
 								</div>
-								<form method="post" action="">
+								<form action="{% url 'dashboard:Verification' %}" method="post" enctype="multipart/form-data">
 									{% csrf_token %}
 									{% if maid %}
 										<div class="col">
@@ -129,7 +158,7 @@
                                                     <div class="submit-field">
                                                         <div class="uploadButton margin-top-30">
                                                             <input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="adhaar" name="adhaar" multiple/>
-                                                            <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
+                                                            <label class="uploadButton-button ripple-effect" for="adhaar">Upload Files</label>
                                                             <span class="uploadButton-file-name"><b>Uplaod your Adhaar Card</b></span>
                                                         </div>
                                                     </div>
@@ -141,21 +170,8 @@
                                                 <div class="col-xl-12">
                                                     <div class="submit-field">
                                                         <div class="uploadButton margin-top-30">
-                                                            <input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="pan" name="pan" multiple/>
-                                                            <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
-                                                            <span class="uploadButton-file-name"><b>Uplaod your Pan Card</b></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-												<br>
-												<br>
-
-                                                <div class="col-xl-12">
-                                                    <div class="submit-field">
-                                                        <div class="uploadButton margin-top-30">
                                                             <input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="voting" name="voting" multiple/>
-                                                            <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
+                                                            <label class="uploadButton-button ripple-effect" for="voting">Upload Files</label>
                                                             <span class="uploadButton-file-name"><b>Uplaod your Voting Card</b></span>
                                                         </div>
                                                     </div>
@@ -251,6 +267,25 @@
 {% include "js-files.html" %}
 <!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
 <script>
+
+	// Get all elements with the class 'fileInput'
+	const fileInputs = document.querySelectorAll('.uploadButton-input');
+
+	// Loop through each file input element
+	fileInputs.forEach(function(input) {
+	// Add change event listener to each input element
+	input.addEventListener('change', function() {
+		const file = this.files[0]; // Get the selected file
+		const fileNameElement = this.nextElementSibling; // Get the next sibling element (the <p> element) to display the file name
+
+		if (file) {
+		fileNameElement.textContent = file.name; // Display file name
+		} else {
+		fileNameElement.textContent = 'No file selected';
+		}
+		});
+	});
+
 // Snackbar for user status switcher
 $('#snackbar-user-status label').click(function() { 
 	Snackbar.show({

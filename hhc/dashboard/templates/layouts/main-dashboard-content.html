@@ -1,6 +1,36 @@
-<div class="dashboard-content-container" data-simplebar>
+<div class="dashboard-content-container" data-simplebar>    
     <div class="dashboard-content-inner" >
-        
+        {% if messages %}
+            <ul class="messages" style="padding:0px;margin-bottom:30px;">
+                {% for message in messages %}
+                    {% if message.tags == 'error'  %}
+                        <li{% if message.tags %} style="border:1px solid #f5c6cb;background-color:#f8d7da;color:#721c24;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-danger" {% endif %}>
+                            <i class="fa fa-exclamation-circle"></i>
+                            {{ message}} 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% elif message.tags == 'info' %}
+                        <li{% if message.tags %} style="border:1px solid #b8daff;background-color:#cce5ff;color:#004085;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-primary" {% endif %}>
+                            {{ message}} 
+                            <i class="fa fa-thumbs-up"></i>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% else %}
+                        <li{% if message.tags %} style="border:1px solid #c3e6cb;background-color:#d4edda;color:#155724;padding:5px 10px;border-radius:8px;list-style: none;"  class="alert alert-{{ message.tags }}"{% endif %}>
+                            <i class="fa fa-check-circle"></i>
+                            {{ message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
         <!-- Dashboard Headline -->
         <div class="dashboard-headline">
             <h3>Hey, {{user.user_name}}</h3>
