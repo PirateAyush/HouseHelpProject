@@ -6,7 +6,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Hireo</title>
+<title>HHC</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -52,14 +52,46 @@
 	{% comment %} {% include "layouts/main-dashboard-content.html" %} {% endcomment %}
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
-			
+			<input type="hidden" value="{{userExtraDetails.service_type}}" id="selected_service_types">
+			<input type="hidden" value="{{userExtraDetails.available_days}}" id="selected_available_days">
+		{% if messages %}
+            <ul class="messages" style="padding:0px;margin-bottom:30px;">
+                {% for message in messages %}
+                    {% if message.tags == 'error'  %}
+                        <li{% if message.tags %} style="border:1px solid #f5c6cb;background-color:#f8d7da;color:#721c24;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-danger" {% endif %}>
+                            <i class="fa fa-exclamation-circle"></i>
+                            {{ message}} 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% elif message.tags == 'info' %}
+                        <li{% if message.tags %} style="border:1px solid #b8daff;background-color:#cce5ff;color:#004085;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-primary" {% endif %}>
+                            {{ message}} 
+                            <i class="fa fa-thumbs-up"></i>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% else %}
+                        <li{% if message.tags %} style="border:1px solid #c3e6cb;background-color:#d4edda;color:#155724;padding:5px 10px;border-radius:8px;list-style: none;"  class="alert alert-{{ message.tags }}"{% endif %}>
+                            <i class="fa fa-check-circle"></i>
+                            {{ message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
 	
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="{% url 'dashboard:Dashboard' user_id=user.id %}">Home</a></li>
 						<li>Dashboard</li>
 					</ul>
 				</nav>
@@ -110,9 +142,9 @@
 										<input class="file-upload" type="file" accept="image/*"/>
 									</div>
 								</div>
-								<form method="post" action="">
+								<form action="{% url 'dashboard:Advance' %}" method="post" enctype="multipart/form-data">
 									{% csrf_token %}
-									{% if maid %}
+									{% if user_type == 2 %}
 										<div class="col">
 											<div class="row">
 
@@ -132,22 +164,34 @@
 															<h5>Service Type</h5>
 														</div>
 														<div class="checkbox">
-															<input type="checkbox" id="chekcbox1">
-															<label for="chekcbox1"><span class="checkbox-icon"></span> Cleaning</label>
+															<input type="checkbox" id="service_chekcbox1" name="service_chekcbox" value="1" select>
+															<label for="service_chekcbox1"><span class="checkbox-icon"></span> Cleaning</label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcbox2">
-															<label for="chekcbox2"><span class="checkbox-icon"></span> Laundry</label>
+															<input type="checkbox" id="service_chekcbox2" name="service_chekcbox" value="2">
+															<label for="service_chekcbox2"><span class="checkbox-icon"></span> Laundry</label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcbox3">
-															<label for="chekcbox3"><span class="checkbox-icon"></span> Cooking</label>
+															<input type="checkbox" id="service_chekcbox3" name="service_chekcbox" value="3">
+															<label for="service_chekcbox3"><span class="checkbox-icon"></span> Cooking</label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcbox4">
-															<label for="chekcbox4"><span class="checkbox-icon"></span> Baby Sitting</label>
+															<input type="checkbox" id="service_chekcbox4" name="service_chekcbox" value="4">
+															<label for="service_chekcbox4"><span class="checkbox-icon"></span> Baby Sitting</label>
 														</div>
 													</div>
+													{% comment %} <div class="submit-field">
+														<div class="section-headline margin-top-25 margin-bottom-12">
+															<h5>Service Type</h5>
+														</div>
+														{% for option in service_types %}
+															<div class="checkbox" style="margin-left:5%;">
+																<input type="checkbox" id="service_chekcbox{{ forloop.counter }}" name="service_chekcbox" value="{{ forloop.counter }}"
+																	{% if forloop.counter|stringformat:"i" in user_extra_details.service_type %} checked {% endif %}>
+																<label for="service_chekcbox{{ forloop.counter }}"><span class="checkbox-icon"></span> {{ option }}</label>
+															</div>
+														{% endfor %}
+													</div> {% endcomment %}
 												</div>
 												<div class="col-xl-6">
 												</div>
@@ -155,34 +199,39 @@
 												<div class="col-xl-11">
 													<div class="submit-field">
 														<div class="section-headline margin-top-25 margin-bottom-12">
-															<h5>Days of the week available</h5>
+															<h5>Days of the week available
+																<div class="checkbox" style="margin-left:2%;">
+																	<input type="checkbox" id="selectAll" name="selectAll" value="0">
+																	<label for="selectAll"><span class="checkbox-icon"></span> All</label>
+																</div>
+															</h5>
 														</div>
 														<div class="checkbox">
-															<input type="checkbox" id="chekcboxDay1">
+															<input type="checkbox" id="chekcboxDay1" name="chekcboxDay" class="dayCheckbox" value="Monday">
 															<label for="chekcboxDay1"><span class="checkbox-icon"></span> Monday</label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcboxDay2">
+															<input type="checkbox" id="chekcboxDay2" name="chekcboxDay" class="dayCheckbox" value="Tuesday">
 															<label for="chekcboxDay2"><span class="checkbox-icon"></span> Tuesday</label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcboxDay3">
+															<input type="checkbox" id="chekcboxDay3" name="chekcboxDay" class="dayCheckbox" value="Wednesday">
 															<label for="chekcboxDay3"><span class="checkbox-icon"></span> Wednesday</label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcboxDay4">
+															<input type="checkbox" id="chekcboxDay4" name="chekcboxDay" class="dayCheckbox" value="Thursday">
 															<label for="chekcboxDay4"><span class="checkbox-icon"></span> Thursday </label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcboxDay5">
+															<input type="checkbox" id="chekcboxDay5" name="chekcboxDay" class="dayCheckbox" value="Friday">
 															<label for="chekcboxDay5"><span class="checkbox-icon"></span> Friday </label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcboxDay6">
+															<input type="checkbox" id="chekcboxDay6" name="chekcboxDay" class="dayCheckbox" value="Saturday">
 															<label for="chekcboxDay6"><span class="checkbox-icon"></span> Saturday </label>
 														</div>
 														<div class="checkbox" style="margin-left:5%;">
-															<input type="checkbox" id="chekcboxDay7">
+															<input type="checkbox" id="chekcboxDay7" name="chekcboxDay" class="dayCheckbox" value="Sunday">
 															<label for="chekcboxDay7"><span class="checkbox-icon"></span> Sunday </label>
 														</div>
 													</div>
@@ -194,7 +243,7 @@
 												<div class="col-xl-6">
 													<div class="submit-field">
 														<h5>Preferred Working Hours</h5>
-														<input type="number" class="with-border" min="1" max="9">
+														<input type="number" class="with-border" min="1" max="9" name="working_hours">
 													</div>
 												</div>
 												<div class="col-xl-6">
@@ -210,13 +259,13 @@
 												<div class="col-xl-3">
 													<div class="submit-field">
 														<h5>From</h5>
-														<input type="number" class="with-border" min="1" max="12">
+														<input type="number" class="with-border" min="1" max="12" name="from" required>
 													</div>
 												</div>
 												<div class="col-xl-2">
 													<div class="submit-field">
 														<h5>AM-PM</h5>
-														<select id="language" name="language">
+														<select id="from_ampm" name="from_ampm">
 															<option value="AM">AM</option>
 															<option value="PM">PM</option>
 														</select>
@@ -226,13 +275,13 @@
 												<div class="col-xl-3">
 													<div class="submit-field">
 														<h5>To</h5>
-														<input type="number" class="with-border" min="1" max="12">
+														<input type="number" class="with-border" min="1" max="12" name="to" required>
 													</div>
 												</div>
 												<div class="col-xl-2">
 													<div class="submit-field">
 														<h5>AM-PM</h5>
-														<select id="language" name="language">
+														<select id="to_ampm" name="to_ampm">
 															<option value="AM">AM</option>
 															<option value="PM">PM</option>
 														</select>
@@ -254,7 +303,7 @@
 												<div class="col-xl-4">
 													<div class="submit-field">
 														<h5>Years of experience (if any)</h5>
-														<input type="number" class="with-border" min="0">
+														<input type="number" class="with-border" min="0" name="years_of_exp">
 													</div>
 												</div>
 												<div class="col-xl-8">
@@ -263,14 +312,14 @@
 												<div class="col-xl-12">
 													<div class="submit-field">
 														<h5>Specific Skills</h5>
-														<textarea class="with-border"></textarea>
+														<textarea class="with-border" name="skill_desc"></textarea>
 													</div>
 												</div>
 
 												<div class="col-xl-6">
 													<div class="submit-field">
 														<h5>Reference contact number (if any)</h5>
-														<input type="text" class="with-border">
+														<input type="text" class="with-border" name="reference_contact">
 													</div>
 												</div>
 												<div class="col-xl-6">
@@ -279,13 +328,13 @@
 												<div class="col-xl-4">
 													<div class="submit-field">
 														<h5>Previous Salary</h5>
-														<input type="number" class="with-border" min="0" step="500">
+														<input type="number" class="with-border" min="0" step="500" name="prev_salary"/>
 													</div>
 												</div>
 												<div class="col-xl-4">
 													<div class="submit-field">
 														<h5>Salary Expectations</h5>
-														<input type="number" class="with-border" min="0" step="500">
+														<input type="number" class="with-border" min="0" step="500" name="expected_salary">
 													</div>
 												</div>
 												<div class="col-xl-2">
@@ -303,8 +352,188 @@
 										</div>
 									{% endif %}
 									
-									{% if customer %}
-										<h1>Customer</h1>
+									{% if user_type == 1 %}
+										<div class="col">
+											<div class="row">
+
+												<div class="col-xl-12">
+													<div class="boxed-list-headline" style="background-color:#4e4f4f;color:white;">
+														Service & Availability
+													</div>
+												</div>
+
+												<br>
+												<br>
+												<br>
+
+												<div class="col-xl-6">
+													<div class="submit-field">
+														<div class="section-headline margin-top-25 margin-bottom-12">
+															<h5>Service Type</h5>
+														</div>
+														<div class="checkbox">
+															<input type="checkbox" id="service_chekcbox1" name="service_chekcbox" value="1">
+															<label for="service_chekcbox1"><span class="checkbox-icon"></span> Cleaning</label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="service_chekcbox2" name="service_chekcbox" value="2">
+															<label for="service_chekcbox2"><span class="checkbox-icon"></span> Laundry</label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="service_chekcbox3" name="service_chekcbox" value="3">
+															<label for="service_chekcbox3"><span class="checkbox-icon"></span> Cooking</label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="service_chekcbox4" name="service_chekcbox" value="4">
+															<label for="service_chekcbox4"><span class="checkbox-icon"></span> Baby Sitting</label>
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-6">
+												</div>
+
+												<div class="col-xl-11">
+													<div class="submit-field">
+														<div class="section-headline margin-top-25 margin-bottom-12">
+															<h5>Service Days 
+																<div class="checkbox" style="margin-left:2%;">
+																	<input type="checkbox" id="selectAll" name="selectAll" value="0">
+																	<label for="selectAll"><span class="checkbox-icon"></span> All</label>
+																</div>
+															</h5>
+														</div>
+														<div class="checkbox">
+															<input type="checkbox" id="chekcboxDay1" name="chekcboxDay" class="dayCheckbox" value="Monday">
+															<label for="chekcboxDay1"><span class="checkbox-icon"></span> Monday</label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="chekcboxDay2" name="chekcboxDay" class="dayCheckbox" value="Tuesday">
+															<label for="chekcboxDay2"><span class="checkbox-icon"></span> Tuesday</label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="chekcboxDay3" name="chekcboxDay" class="dayCheckbox" value="Wednesday">
+															<label for="chekcboxDay3"><span class="checkbox-icon"></span> Wednesday</label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="chekcboxDay4" name="chekcboxDay" class="dayCheckbox" value="Thursday">
+															<label for="chekcboxDay4"><span class="checkbox-icon"></span> Thursday </label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="chekcboxDay5" name="chekcboxDay" class="dayCheckbox" value="Friday">
+															<label for="chekcboxDay5"><span class="checkbox-icon"></span> Friday </label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="chekcboxDay6" name="chekcboxDay" class="dayCheckbox" value="Saturday">
+															<label for="chekcboxDay6"><span class="checkbox-icon"></span> Saturday </label>
+														</div>
+														<div class="checkbox" style="margin-left:5%;">
+															<input type="checkbox" id="chekcboxDay7" name="chekcboxDay" class="dayCheckbox" value="Sunday">
+															<label for="chekcboxDay7"><span class="checkbox-icon"></span> Sunday </label>
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-1">
+												</div>
+
+												
+												<div class="col-xl-6">
+													<div class="submit-field">
+														<h5>Estimate Work Time</h5>
+														<input type="number" class="with-border" min="1" max="9" name="working_hours" value="{{userExtraDetails.working_hours}}">
+													</div>
+												</div>
+												<div class="col-xl-6">
+												</div>
+
+												
+
+												<div class="col-xl-12" style="margin-top:3%;">
+													<div class="submit-field">
+														<h5>Time Slot</h5>
+													</div>
+												</div>
+												<div class="col-xl-3">
+													<div class="submit-field">
+														<h5>From</h5>
+														<input type="number" class="with-border" min="1" max="12" name="from">
+													</div>
+												</div>
+												<div class="col-xl-2">
+													<div class="submit-field">
+														<h5>AM-PM</h5>
+														<select id="from_ampm" name="from_ampm">
+															<option value="AM">AM</option>
+															<option value="PM">PM</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-1"></div>
+												<div class="col-xl-3">
+													<div class="submit-field">
+														<h5>To</h5>
+														<input type="number" class="with-border" min="1" max="12" name="to">
+													</div>
+												</div>
+												<div class="col-xl-2">
+													<div class="submit-field">
+														<h5>AM-PM</h5>
+														<select id="to_ampm" name="to_ampm">
+															<option value="AM">AM</option>
+															<option value="PM">PM</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-1"></div>
+
+
+												<div class="col-xl-12">
+													<div class="boxed-list-headline" style="background-color:#4e4f4f;color:white;">
+														Experience and Skills
+													</div>
+												</div>
+
+												<br>
+												<br>
+												<br>
+												
+												<div class="col-xl-4">
+													<div class="submit-field">
+														<h5>Minimum experience required</h5>
+														<input type="number" class="with-border" min="0" name="years_of_exp" value="{{userExtraDetails.years_of_experience}}">
+													</div>
+												</div>
+												<div class="col-xl-8">
+												</div>
+
+
+												<div class="col-xl-6">
+													<div class="submit-field">
+														<h5>Prevois House Helper contact (if any)</h5>
+														<input type="text" class="with-border" name="reference_contact" value="{{userExtraDetails.reference_contact}}">
+													</div>
+												</div>
+												<div class="col-xl-6">
+												</div>
+
+												<div class="col-xl-4">
+													<div class="submit-field">
+														<h5>Salary Budget</h5>
+														<input type="number" class="with-border" min="0" step="500" name="expected_salary" value="{{userExtraDetails.expected_salary}}">
+													</div>
+												</div>
+												<div class="col-xl-8">
+												</div>
+
+
+												<div class="col-xl-4">
+													<button class="button full-width button-sliding-icon ripple-effect" type="submit" >Build <i class="icon-feather-settings" formaction="Dashboard"></i></button>
+												</div>
+
+												<br>
+												<br>
+												<br>
+											</div>
+										</div>
 									{% endif %}
 								</form>
 							</div>
@@ -399,6 +628,76 @@ $('#snackbar-user-status label').click(function() {
 <!-- Chart.js // documentation: http://www.chartjs.org/docs/latest/ -->
 <script src="js/chart.min.js"></script>
 <script>
+
+	// Get the select all checkbox and all day checkboxes
+	var selectAllCheckbox = document.getElementById("selectAll");
+	var dayCheckboxes = document.querySelectorAll(".dayCheckbox");
+
+	// Add an event listener to the select all checkbox
+	selectAllCheckbox.addEventListener("change", function() {
+		// If select all checkbox is checked, check all day checkboxes; otherwise, uncheck them
+		for (var i = 0; i < dayCheckboxes.length; i++) {
+			dayCheckboxes[i].checked = this.checked;
+		}
+	});
+
+	// Add event listeners to all day checkboxes to update select all checkbox state
+	for (var i = 0; i < dayCheckboxes.length; i++) {
+		dayCheckboxes[i].addEventListener("change", function() {
+			// If any day checkbox is unchecked, uncheck the select all checkbox
+			if (!this.checked) {
+				selectAllCheckbox.checked = false;
+			}
+		});
+	}
+
+	var selectedCheckBox = document.getElementById("selected_available_days");
+	var parseSelectedServices = JSON.parse(selectedCheckBox.value);
+	console.log(parseSelectedServices); 
+
+	document.addEventListener("DOMContentLoaded", function() {
+		var selectedCheckBox = document.getElementById("selected_service_types");
+		var parseSelectedServices = JSON.parse(selectedCheckBox.value);
+	
+		// Get all the checkboxes with the name "service_chekcbox"
+		var checkboxes = document.querySelectorAll('input[name="service_chekcbox"]');
+	
+		// Iterate over each checkbox
+		checkboxes.forEach(function(checkbox) {
+			// Check if the checkbox value is in the parsed selected services
+			if (parseSelectedServices.includes(checkbox.value)) {
+				checkbox.checked = true; // If it is, check the checkbox
+			}
+		});
+	});
+	
+	document.addEventListener("DOMContentLoaded", function() {
+		var selectedAvailableDaysInput = document.getElementById("selected_available_days");
+		var selectedAvailableDays = JSON.parse(selectedAvailableDaysInput.value);
+	
+		// Get all the checkboxes with the class "dayCheckbox"
+		var checkboxes = document.querySelectorAll('.dayCheckbox');
+	
+		// Iterate over each checkbox
+		checkboxes.forEach(function(checkbox) {
+			// Check if the checkbox value is in the selected available days
+			if (selectedAvailableDays.includes(checkbox.value)) {
+				checkbox.checked = true; // If it is, check the checkbox
+			}
+		});
+	
+		// Select all checkbox functionality
+		var selectAllCheckbox = document.getElementById('selectAll');
+		selectAllCheckbox.addEventListener('change', function() {
+			checkboxes.forEach(function(checkbox) {
+				checkbox.checked = selectAllCheckbox.checked;
+			});
+		});
+	});
+	
+
+
+
 	Chart.defaults.global.defaultFontFamily = "Nunito";
 	Chart.defaults.global.defaultFontColor = '#888';
 	Chart.defaults.global.defaultFontSize = '14';
