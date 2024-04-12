@@ -6,7 +6,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Hireo</title>
+<title>HHC</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -41,13 +41,43 @@
 	================================================== -->
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner" >
-			
+		{% if messages %}
+            <ul class="messages" style="padding:0px;margin-bottom:30px;">
+                {% for message in messages %}
+                    {% if message.tags == 'error'  %}
+                        <li{% if message.tags %} style="border:1px solid #f5c6cb;background-color:#f8d7da;color:#721c24;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-danger" {% endif %}>
+                            <i class="fa fa-exclamation-circle"></i>
+                            {{ message}} 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% elif message.tags == 'info' %}
+                        <li{% if message.tags %} style="border:1px solid #b8daff;background-color:#cce5ff;color:#004085;padding:5px 10px;border-radius:8px;list-style: none;" class="alert alert-primary" {% endif %}>
+                            {{ message}} 
+                            <i class="fa fa-thumbs-up"></i>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% else %}
+                        <li{% if message.tags %} style="border:1px solid #c3e6cb;background-color:#d4edda;color:#155724;padding:5px 10px;border-radius:8px;list-style: none;"  class="alert alert-{{ message.tags }}"{% endif %}>
+                            <i class="fa fa-check-circle"></i>
+                            {{ message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:right;margin-top:4px;">
+                                <i class="icon-line-awesome-close"></i>
+                            </button>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="{% url 'dashboard:Dashboard' user_id=user.id %}">Home</a></li>
 						<li>Dashboard</li>
 					</ul>
 				</nav>
@@ -96,7 +126,7 @@
 										<input class="file-upload" type="file" accept="image/*"/>
 									</div>
 								</div>
-								<form method="post" action="">
+								<form action="{% url 'dashboard:Profile' %}" method="post" enctype="multipart/form-data">
 									{% csrf_token %}
 									<div class="col">
 										<div class="row">
@@ -107,13 +137,13 @@
 													<h5>User Type</h5>
 													<div class="account-type">
 														<div>
-															<input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio" checked/>
-															<label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Customer</label>
+															<input type="radio" id="cust-radio" class="account-type-radio" {% if user.reason == 1 %} checked {% endif %} name="user_type" value="1" />
+															<label for="cust-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Customer</label>
 														</div>
 
 														<div>
-															<input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio"/>
-															<label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Maid</label>
+															<input type="radio" id="maid-radio" class="account-type-radio"  {% if user.reason == 2 %} checked {% endif %} name="user_type" value="2"/>
+															<label for="maid-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Maid</label>
 														</div>
 													</div>
 												</div>
@@ -125,35 +155,36 @@
 											<div class="col-xl-6">
 												<div class="submit-field">
 													<h5>First Name</h5>
-													<input type="text" class="with-border" value="{{user.first_name}}">
+													<input name="fname" type="text" class="with-border" value="{{user.first_name}}">
+													<input name="uname" type="hidden" value="{{user.user_name}}">
 												</div>
 											</div>
 
 											<div class="col-xl-6">
 												<div class="submit-field">
 													<h5>Last Name</h5>
-													<input type="text" class="with-border" value="{{user.last_name}}">
+													<input name="lname" type="text" class="with-border" value="{{user.last_name}}">
 												</div>
 											</div>
 
 											<div class="col-xl-6">
 												<div class="submit-field">
 													<h5>Email</h5>
-													<input type="text" class="with-border" value="{{user.email}}">
+													<input name="email" type="text" class="with-border" value="{{user.email}}">
 												</div>
 											</div>
 
 											<div class="col-xl-6">
 												<div class="submit-field">
 													<h5>Phone</h5>
-													<input type="text" class="with-border" value="{{user.phone_number}}">
+													<input name="phone" type="text" class="with-border" value="{{user.phone_number}}">
 												</div>
 											</div>
 
 											<div class="col-xl-12">
 												<div class="submit-field">
 													<h5>Address</h5>
-													<textarea class="with-border">{{user.address}}</textarea>
+													<textarea name="address" class="with-border">{{user.address}}</textarea>
 												</div>
 											</div>
 											<div class="col-xl-12">
@@ -161,7 +192,7 @@
 													Personal Details
 												</div>
 											</div>
-
+											{{extraUser.pref_lang}}
 											<br>
 											<br>
 											<br>
@@ -172,18 +203,18 @@
 													<h5>Gender</h5>
 													<div class="account-type">
 														<div>
-															<input type="radio" name="gender" id="employer-radio1" class="account-type-radio" checked/>
-															<label for="employer-radio1" class="ripple-effect-dark"><i class="icon-line-awesome-male"></i> Male</label>
+															<input value="1" type="radio" name="gender" id="male" class="account-type-radio" checked />
+															<label for="male" class="ripple-effect-dark"><i class="icon-line-awesome-male"></i> Male</label>
 														</div>
 
 														<div>
-															<input type="radio" name="gender" id="employer-radio2" class="account-type-radio"/>
-															<label for="employer-radio2" class="ripple-effect-dark"><i class="icon-line-awesome-female"></i> Female</label>
+															<input value="2" type="radio" name="gender" id="female" class="account-type-radio" {% if extraUser.gender == 2%} checked {% endif%}/>
+															<label for="female" class="ripple-effect-dark"><i class="icon-line-awesome-female"></i> Female</label>
 														</div>
 
 														<div>
-															<input type="radio" name="gender" id="employer-radio3" class="account-type-radio"/>
-															<label for="employer-radio3" class="ripple-effect-dark"><i class="icon-line-awesome-genderless"></i> Other</label>
+															<input value="3" type="radio" name="gender" id="other" class="account-type-radio" {% if extraUser.gender == 3%} checked {% endif%}/>
+															<label for="other" class="ripple-effect-dark"><i class="icon-line-awesome-genderless"></i> Other</label>
 														</div>
 													</div>
 												</div>
@@ -192,7 +223,7 @@
 											<div class="col-xl-6">
 												<div class="submit-field">
 													<h5>Date Of Birth</h5>
-													<input type="date" class="with-border" value="">
+													<input type="date" class="with-border" {% if extraUser.birth_date != False %} value="{{extraUser.birth_date}}" {% else %}  value="" {% endif %} name="birth_date">
 												</div>
 											</div>
 											<div class="col-xl-6">
@@ -202,17 +233,17 @@
 												<div class="submit-field">
 													<h5>Prefered Language</h5>
 													<select id="language" name="language">
-														<option value="marathi">Marathi</option>
-														<option value="hindi">Hindi</option>
-														<option value="telugu">Telugu</option>
-														<option value="tamil">Tamil</option>
-														<option value="bengali">Bengali</option>
-														<option value="malayalam">Malayalam</option>
-														<option value="kannada">Kannada</option>
-														<option value="gujarati">Gujarati</option>
-														<option value="oriya">Oriya</option>
-														<option value="punjabi">Punjabi</option>
-														<option value="assamese">Assamese</option>
+														<option value="marathi"  {% if extraUser.prefered_lang == "marathi" %} selected {% endif %}>Marathi</option>
+														<option value="hindi"    {% if extraUser.prefered_lang == "hindi"   %} selected {% endif %}>Hindi</option>
+														<option value="telugu"   {% if extraUser.prefered_lang == "telugu"  %} selected {% endif %}>Telugu</option>
+														<option value="tamil"    {% if extraUser.prefered_lang == "tamil"   %} selected {% endif %}>Tamil</option>
+														<option value="bengali"  {% if extraUser.prefered_lang == "bengali" %} selected {% endif %}>Bengali</option>
+														<option value="malayalam"{% if extraUser.prefered_lang == "malayalam"%}selected {% endif %}>Malayalam</option>
+														<option value="kannada"  {% if extraUser.prefered_lang == "kannada" %} selected {% endif %}>Kannada</option>
+														<option value="gujarati" {% if extraUser.prefered_lang == "gujarati"%} selected {% endif %}>Gujarati</option>
+														<option value="oriya"    {% if extraUser.prefered_lang == "oriya"   %} selected {% endif %}>Oriya</option>
+														<option value="punjabi"  {% if extraUser.prefered_lang == "punjabi" %} selected {% endif %}>Punjabi</option>
+														<option value="assamese" {% if extraUser.prefered_lang == "assamese"%} selected {% endif %}>Assamese</option>
 													</select>
 												</div>
 											</div>
@@ -220,7 +251,8 @@
 											</div>
 
 											<div class="col-xl-4">
-												<button class="button full-width button-sliding-icon ripple-effect" type="submit" >Build <i class="icon-feather-settings" formaction="Dashboard"></i></button>
+												<input name="user_id" type="hidden" value="{{user.id}}">
+												<button class="button full-width button-sliding-icon ripple-effect" type="submit" >Build <i class="icon-feather-settings"></i></button>
 											</div>
 
 											<br>

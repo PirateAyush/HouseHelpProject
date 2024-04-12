@@ -44,9 +44,10 @@ class Feedback(models.Model):
     def __str__(self):
         if self.type == FEEDBACK_TYPE_COMMENTS:
             type =  "Comment"
-        else:
+        elif self.type == FEEDBACK_TYPE_RATE_US:
             type = "Feedback"
-        
+        else:
+            type = "Maid_Customer"
         return f"{self.first_name} {self.last_name} - {type}"
 
 class TeamMember(models.Model):
